@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,10 +36,6 @@
             <img src="images/header.jpg" />
         </div>
         <div id="menu_top">
-            <ul>
-                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                <li><a href="#">Duis eget tortor vitae purus bibendum ornare at sit amet mauris.</a></li>
-            </ul>
             <div id="container">
                 <div id="content">
                     <span class="content_title">Zupa pomidorowa</span>
@@ -64,13 +62,25 @@
                     </p>
                 </div>
                 <div id="sidebar">
-                    <div id="sidebar_title">Filtry</div>
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
+                    <div class="sidebar_title">Filtry</div>
+                    <div class="input_wrapper">
+                        <input type="checkbox">
+                        <label for="">Pomidory</label>
+                    </div>
+                    <div class="input_wrapper">
+                        <input type="checkbox">
+                        <label for="">Cebula</label>
+                    </div>
+                    <div class="input_wrapper">
+                        <input type="checkbox">
+                        <label for="">Wołowina</label>
+                    </div>
+                    <div class="input_wrapper">
+                        <input type="checkbox">
+                        <label for="">Czosnek</label>
+                    </div>
                     <button id="filter_button">Filtruj</button>
-                    <div id="sidebar_title">Najwyżej oceniane</div>
+                    <div class="sidebar_title">Najwyżej oceniane</div>
                     <ul>
                         <li><a href="#">Link 1</a></li>
                         <li><a href="#">Link 2</a></li>
