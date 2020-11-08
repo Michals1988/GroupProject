@@ -3,8 +3,10 @@ package com.przepisy.registration.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.przepisy.connection.ConnectionMysql;
 import com.przepisy.registration.model.User;
 
 public class UsersDao {
@@ -15,14 +17,14 @@ public class UsersDao {
             " (?, ?, ?, ?, ?,?,?);";
 
         int result = 0;
+        
+        Connection con= ConnectionMysql.getCon();  
 
-        Class.forName("com.mysql.jdbc.Driver");
-
-        try (Connection connection = DriverManager
-            .getConnection("jdbc:mysql://localhost:3306/przepisy?allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "admin", "qwerty");
-
-            // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+        //Class.forName("com.mysql.jdbc.Driver");
+               
+        try (
+        		
+            PreparedStatement preparedStatement = con.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setString(1, user.getId());
             preparedStatement.setString(2, user.getLogin());
             preparedStatement.setString(3, user.getPassword());
@@ -39,6 +41,8 @@ public class UsersDao {
             // process sql exception
             printSQLException(e);
         }
+        	
+        // result zwraca iloœæ zmienionych wierszy
         return result;
     }
 
@@ -57,4 +61,40 @@ public class UsersDao {
             }
         }
     }
+    
+    public static int UserCheckIfExist(String login, String email) {
+    	
+    	int result = 0;
+
+    	String CHECK_USERS_SQL = " select count(name) as xxx from users" +
+                				 "  where login = ? " +
+                				 "  or email = ?";
+    	
+    	Connection con= ConnectionMysql.getCon(); 
+    	
+    	try (        		
+                PreparedStatement preparedStatement = con.prepareStatement(CHECK_USERS_SQL)) {
+                preparedStatement.setString(1, login);
+                preparedStatement.setString(2, email);
+
+                System.out.println(preparedStatement);
+                       
+                ResultSet resultSet = preparedStatement.executeQuery();
+                //result =  resultSet.getInt("x");
+                
+                //System.out.println("xxxxxxxxxxxxxxx" + result);
+       
+                while (resultSet.next()) {
+                	  result  = resultSet.getInt("xxx");
+                	}
+
+            } catch (SQLException e) {
+                // process sql exception
+                printSQLException(e);
+            }
+    	
+    	//result zwraca ilosc znalezionych userow o tym samym loginie lub hasle, 0 = OK
+    	return result;
+    }
+    
 }

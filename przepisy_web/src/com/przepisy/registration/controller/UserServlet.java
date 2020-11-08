@@ -55,6 +55,7 @@ public class UserServlet extends HttpServlet {
 		
 		User user = new User();
 		
+		
 		//user.setId(id);  ID automatycznie generowane jest w konstruktorze klasu User
 		
 		user.setLogin(login);
@@ -65,16 +66,22 @@ public class UserServlet extends HttpServlet {
 		//user.setAdmin(Boolean.parseBoolean(admin));   - z zasady user nie jest administratorem
 		
 		try {
-			UsersDao.registerUser(user);
+			
+			 if (UsersDao.UserCheckIfExist(user.getLogin(), user.getLogin())==0)
+			 {
+				 if(UsersDao.registerUser(user)==1) {
+					 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
+					 dispatcher.forward(request, response);
+				 }else {
+					 System.out.println("cos poszlo nie tak przy rejestracji");
+				 }					 				 				 
+			 } else {
+				 System.out.println("user istnieje");
+			 }
+			
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
-		dispatcher.forward(request, response);
-		
-		
-		
+		}		
 	}
-
 }
