@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Gastrofaza - logowanie</title>
+<title>Insert title here</title>
 </head>
-<body>
 <body>
  <div align="center">
   <h1>Employee Register Form </h1>
@@ -21,10 +20,8 @@
      <td><input type="password" name="password" /></td>
     </tr>
    </table>
-   <input type="submit" value="Sign in" />
+   <input type="submit" value="Submit" />
   </form>
  </div>
-</body>
-</html>
 </body>
 </html>

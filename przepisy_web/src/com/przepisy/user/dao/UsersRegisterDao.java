@@ -1,4 +1,4 @@
-package com.przepisy.registration.dao;
+package com.przepisy.user.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.przepisy.connection.ConnectionMysql;
-import com.przepisy.registration.model.User;
+import com.przepisy.user.model.User;
 
-public class UsersDao {
+public class UsersRegisterDao {
 
     public static int registerUser(User user) throws ClassNotFoundException {
         String INSERT_USERS_SQL = "INSERT INTO users" +
@@ -19,15 +19,13 @@ public class UsersDao {
         int result = 0;
         
         Connection con= ConnectionMysql.getCon();  
-
-        //Class.forName("com.mysql.jdbc.Driver");
                
         try (
         		
             PreparedStatement preparedStatement = con.prepareStatement(INSERT_USERS_SQL)) {
             preparedStatement.setString(1, user.getId());
             preparedStatement.setString(2, user.getLogin());
-            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(3, user.getPasswordHashed());
             preparedStatement.setString(4, user.getName());
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.setBoolean(6, user.isActive());

@@ -1,4 +1,4 @@
-package com.przepisy.registration.controller;
+package com.przepisy.user.controller;
 
 import java.io.IOException;
 
@@ -8,23 +8,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.przepisy.registration.dao.UsersDao;
-import com.przepisy.registration.model.User;
+
+import com.przepisy.security.Hash256;
+import com.przepisy.user.dao.UsersRegisterDao;
+import com.przepisy.user.model.User;
 
 /**
  * Servlet implementation class UserServlet
  */
 @WebServlet("/register")
-public class UserServlet extends HttpServlet {
+public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private UsersDao userDao = new UsersDao();
+	private UsersRegisterDao userDao = new UsersRegisterDao();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public UserRegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,10 +46,11 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		Hash256 hashed_password = new Hash256();
+		
 		String id = request.getParameter("id");
 		String login = request.getParameter("login");
-		String password = request.getParameter("password");
+		String password = hashed_password.HashPassword(request.getParameter("password"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String active = request.getParameter("active");
@@ -67,9 +70,9 @@ public class UserServlet extends HttpServlet {
 		
 		try {
 			
-			 if (UsersDao.UserCheckIfExist(user.getLogin(), user.getLogin())==0)
+			 if (UsersRegisterDao.UserCheckIfExist(user.getLogin(), user.getLogin())==0)
 			 {
-				 if(UsersDao.registerUser(user)==1) {
+				 if(UsersRegisterDao.registerUser(user)==1) {
 					 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
 					 dispatcher.forward(request, response);
 				 }else {

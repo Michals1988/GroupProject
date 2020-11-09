@@ -1,4 +1,6 @@
-package com.przepisy.registration.model;
+package com.przepisy.user.model;
+
+import com.przepisy.security.Hash256;
 
 public class User {
 	private String id;
@@ -24,6 +26,10 @@ public class User {
 	}
 	public String getLogin() {
 		return login;
+	}
+	public String getPasswordHashed() {
+		Hash256 hashed_password = new Hash256();
+		return hashed_password.HashPassword(this.password);
 	}
 	public void setLogin(String login) {
 		this.login = login;
