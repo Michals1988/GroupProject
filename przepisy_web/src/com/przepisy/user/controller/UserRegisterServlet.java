@@ -50,7 +50,7 @@ public class UserRegisterServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String login = request.getParameter("login");
-		String password = hashed_password.HashPassword(request.getParameter("password"));
+		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String active = request.getParameter("active");
@@ -70,7 +70,7 @@ public class UserRegisterServlet extends HttpServlet {
 		
 		try {
 			
-			 if (UsersRegisterDao.UserCheckIfExist(user.getLogin(), user.getLogin())==0)
+			 if (UsersRegisterDao.UserCheckIfExist(user.getLogin(), user.getEmail())==0)
 			 {
 				 if(UsersRegisterDao.registerUser(user)==1) {
 					 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
