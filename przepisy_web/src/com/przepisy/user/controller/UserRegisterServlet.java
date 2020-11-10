@@ -45,25 +45,17 @@ public class UserRegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Hash256 hashed_password = new Hash256();
 		
-		String id = request.getParameter("id");
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		String active = request.getParameter("active");
-		String admin = request.getParameter("admin");
 		
 		User user = new User();
-		
-		
-		//user.setId(id);  ID automatycznie generowane jest w konstruktorze klasu User
 		
 		user.setLogin(login);
 		user.setPassword(password);
 		user.setName(name);
 		user.setEmail(email);
-		//user.setActive(Boolean.parseBoolean(active)); - z zasady user jest aktywny
-		//user.setAdmin(Boolean.parseBoolean(admin));   - z zasady user nie jest administratorem
 		
 		try {
 			
