@@ -1,7 +1,6 @@
 package com.przepisy.user.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +39,7 @@ public class UsersRegisterDao {
             printSQLException(e);
         }
         	
-        // result zwraca iloœæ zmienionych wierszy
+        // result zwraca iloï¿½ï¿½ zmienionych wierszy
         return result;
     }
 
@@ -78,10 +77,7 @@ public class UsersRegisterDao {
                 System.out.println(preparedStatement);
                        
                 ResultSet resultSet = preparedStatement.executeQuery();
-                //result =  resultSet.getInt("x");
                 
-                //System.out.println("xxxxxxxxxxxxxxx" + result);
-       
                 while (resultSet.next()) {
                 	  result  = resultSet.getInt("xxx");
                 	}

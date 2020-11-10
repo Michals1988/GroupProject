@@ -19,9 +19,6 @@ import com.przepisy.user.dao.UsersRegisterDao;
 @WebServlet("/register")
 public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-	private UsersRegisterDao userDao = new UsersRegisterDao();
        
     /**
      * @see HttpServlet#HttpServlet()

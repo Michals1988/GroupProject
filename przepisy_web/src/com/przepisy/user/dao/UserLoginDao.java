@@ -1,7 +1,6 @@
 package com.przepisy.user.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +47,7 @@ public class UserLoginDao {
     	
     	String LoadUserInfo = " select id,login,password,name,email,active,admin "
     						+  " from users"
-    						+  "where login = ?";
+    						+  " where login = ?";
 
     	Connection con = ConnectionMysql.getCon(); 
 
@@ -56,7 +55,6 @@ public class UserLoginDao {
     		PreparedStatement preparedStatement = con.prepareStatement(LoadUserInfo)) {
     		preparedStatement.setString(1, login);
     		
-
     		System.out.println(preparedStatement);
       
     		ResultSet resultSet = preparedStatement.executeQuery();
