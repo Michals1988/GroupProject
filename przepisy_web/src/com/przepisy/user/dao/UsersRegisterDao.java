@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.przepisy.connection.ConnectionMysql;
-import com.przepisy.user.model.User;
+import com.przepisy.models.User;
 
 public class UsersRegisterDao {
 

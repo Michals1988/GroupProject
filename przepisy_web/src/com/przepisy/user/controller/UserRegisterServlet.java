@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.przepisy.models.User;
 import com.przepisy.security.Hash256;
 import com.przepisy.user.dao.UsersRegisterDao;
-import com.przepisy.user.model.User;
 
 /**
  * Servlet implementation class UserServlet

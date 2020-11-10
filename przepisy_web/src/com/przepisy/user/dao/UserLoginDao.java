@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.przepisy.connection.ConnectionMysql;
-import com.przepisy.user.model.User;
+import com.przepisy.models.User;
 
 public class UserLoginDao {
    
@@ -41,6 +41,41 @@ public class UserLoginDao {
     	
     	//result zwraca ilosc znalezionych userow o tym samym loginie lub hasle, 0 = NIE OK
     	return result;
+    }
+    
+    
+    public static void LoadUserDataByLogin(User user,String login) {
+    	
+    	String LoadUserInfo = " select id,login,password,name,email,active,admin "
+    						+  " from users"
+    						+  "where login = ?";
+
+    	Connection con = ConnectionMysql.getCon(); 
+
+    	try (        		
+    		PreparedStatement preparedStatement = con.prepareStatement(LoadUserInfo)) {
+    		preparedStatement.setString(1, login);
+    		
+
+    		System.out.println(preparedStatement);
+      
+    		ResultSet resultSet = preparedStatement.executeQuery();
+
+    		while (resultSet.next()) {
+    				user.setId(resultSet.getString("id"));
+    				user.setLogin(resultSet.getString("login")); 
+    				user.setPassword(resultSet.getString("password")); 
+    				user.setName(resultSet.getString("name")); 
+    				user.setEmail(resultSet.getString("email")); 
+    				user.setActive(resultSet.getBoolean("actvie")); 
+    				user.setAdmin(resultSet.getBoolean("admin")); 
+    		}
+
+    		} catch (SQLException e) {
+			// process sql exception
+			printSQLException(e);
+			}
+    	
     }
     
     

@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.przepisy.models.Premium;
+import com.przepisy.models.User;
+import com.przepisy.user.dao.PremiumDao;
 import com.przepisy.user.dao.UserLoginDao;
-import com.przepisy.user.model.User;
 
 /**
  * Servlet implementation class UserServlet
@@ -58,7 +61,19 @@ public class UserLoginServlet extends HttpServlet {
 			
 			 if (UserLoginDao.LogInUser(user)==1)
 			 {
+				 HttpSession session = request.getSession(true);
+				 Premium premium = new Premium();
+				 UserLoginDao.LoadUserDataByLogin(user, user.getLogin());
+				 PremiumDao.LoadPremiumInfo(premium, user.getId());
+				 session.setAttribute("id", user.getId());
+				 session.setAttribute("login", user.getLogin());
+				 session.setAttribute("email", user.getEmail());
+				 session.setAttribute("premium", premium.getLevel());
 				 System.out.println("zalogowano");
+				 System.out.println("sesja 'id usera: "+session.getAttribute("id"));
+				 System.out.println("sesja login usera"+session.getAttribute("login"));
+				 System.out.println("sesja email usera"+session.getAttribute("email"));
+				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
 			 } else {
 				 System.out.println("user nie istnieje");
 			 }

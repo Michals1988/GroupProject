@@ -1,4 +1,4 @@
-package com.przepisy.user.model;
+package com.przepisy.models;
 
 import com.przepisy.security.Hash256;
 
