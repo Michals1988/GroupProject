@@ -8,17 +8,16 @@
 </head>
 <body>
  <div align="center">
-  <h1>GASTROFAZA PANEL LOGOWANIA</h1>
-  <h5><%=request.getAttribute("errorMessage") %></h5>
-  <form action="<%= request.getContextPath() %>/login" method="post">
+  <h1>Dodaj nowa jednostke </h1>
+  <form action="<%= request.getContextPath() %>/UnitAdd" method="POST">
    <table style="with: 80%">
     <tr>
-     <td>Nazwa uzytkownika</td>
-     <td><input type="text" name="login" /></td>
+     <td>Kod jednostki</td>
+     <td><input type="text" name="unit_code" /></td>
     </tr>
     <tr>
-     <td>Haslo</td>
-     <td><input type="password" name="password" /></td>
+     <td>Opis jednostki</td>
+     <td><input type="text" name="unit_descr" /></td>
     </tr>
    </table>
    <input type="submit" value="Submit" />

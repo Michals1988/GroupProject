@@ -12,9 +12,12 @@ public class User {
 	private boolean admin;
 	
 	public User() {
-		this.id = java.util.UUID.randomUUID().toString();
 		this.active = true;
 		this.admin = false;
+	}
+	
+	public String getGeneratedId() {
+		return java.util.UUID.randomUUID().toString();
 	}
 	
 	
