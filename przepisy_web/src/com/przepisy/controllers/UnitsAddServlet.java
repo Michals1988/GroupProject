@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import javax.servlet.http.HttpSession;
 
 import com.przepisy.dao.UnitsDao;
 import com.przepisy.models.Units;
@@ -19,14 +18,23 @@ import com.przepisy.models.Units;
 @WebServlet("/UnitAdd")
 public class UnitsAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	HttpSession session;
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("print1: "+request.getSession().getId());
+		System.out.println("print2: "+request.getSession(false));
+		session = request.getSession(false);
+		if (session != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UnitAdd.jsp");
+			dispatcher.forward(request, response);
+		} else { 
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
+			dispatcher.forward(request, response);
+		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UnitAdd.jsp");
-		dispatcher.forward(request, response);
 	}
 
 
@@ -40,7 +48,14 @@ public class UnitsAddServlet extends HttpServlet {
 		unit.setCode(unit_code);
 		unit.setDescription(unit_descr);
 		
-		
+		session = request.getSession(false);
+		if (session != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UnitAdd.jsp");
+			dispatcher.forward(request, response);
+		} else { 
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
+			dispatcher.forward(request, response);
+		}
 			
 			 if (UnitsDao.CheckIfUnitExist(unit_code)==0)
 			 {
@@ -48,8 +63,6 @@ public class UnitsAddServlet extends HttpServlet {
 			 } else {
 				 System.out.println("Jednostka z takim kodem juz istnieje!");
 			 }
-			
-			
 		
 	}
 }

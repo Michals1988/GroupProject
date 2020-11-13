@@ -20,6 +20,8 @@ public class UserLoginDao {
     	
     	Connection con = ConnectionMysql.getCon(); 
     	
+    	System.out.println("*********************** RESULT: "+ result);
+    	
     	try (        		
                 PreparedStatement preparedStatement = con.prepareStatement(CHECK_USERS_SQL)) {
                 preparedStatement.setString(1, user.getLogin());
@@ -28,7 +30,7 @@ public class UserLoginDao {
                 System.out.println(preparedStatement);
                        
                 ResultSet resultSet = preparedStatement.executeQuery();
-                
+                System.out.println("*********************** RESULT: "+ result);
                 while (resultSet.next()) {
                 	  result  = resultSet.getInt("xxx");
                 	}
@@ -39,6 +41,7 @@ public class UserLoginDao {
             }
     	
     	//result zwraca ilosc znalezionych userow o tym samym loginie lub hasle, 0 = NIE OK
+    	System.out.println("*********************** RESULT: "+ result);
     	return result;
     }
     
