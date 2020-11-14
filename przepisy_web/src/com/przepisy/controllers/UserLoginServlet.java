@@ -49,7 +49,6 @@ public class UserLoginServlet extends HttpServlet {
 				 Cookie loginCookie = new Cookie("user", login);
 				 loginCookie.setMaxAge(30*60);
 				 response.addCookie(loginCookie);
-				 //response.sendRedirect("index.jsp");
 				 Premium premium = new Premium();
 				 UserLoginDao.LoadUserDataByLogin(user, user.getLogin());
 				 PremiumDao.LoadPremiumInfo(premium, user.getId());
@@ -62,8 +61,11 @@ public class UserLoginServlet extends HttpServlet {
 				 System.out.println("sesja login usera"+session.getAttribute("login"));
 				 System.out.println("sesja email usera"+session.getAttribute("email"));
 				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
+				 //response.sendRedirect("/przepisy_web/MainPage");
+				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
+				 dispatcher.forward(request, response);
 			 } else {
-				 System.out.println("user nie istnieje");
+				 System.out.println("/WEB-INF/views/loginuser.jsp");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
 				 request.setAttribute("errorMessage", "Invalid user or password");
 				 dispatcher.forward(request, response);
