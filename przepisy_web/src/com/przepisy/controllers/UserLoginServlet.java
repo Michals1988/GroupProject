@@ -62,8 +62,7 @@ public class UserLoginServlet extends HttpServlet {
 				 System.out.println("sesja email usera"+session.getAttribute("email"));
 				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
 				 //response.sendRedirect("/przepisy_web/MainPage");
-				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
-				 dispatcher.forward(request, response);
+				 response.sendRedirect("MainPage");
 			 } else {
 				 System.out.println("/WEB-INF/views/loginuser.jsp");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
