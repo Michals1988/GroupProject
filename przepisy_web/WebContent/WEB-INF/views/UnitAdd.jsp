@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
  <div align="center">
   <h1>Dodaj nowa jednostke </h1>
   <form action="<%= request.getContextPath() %>/UnitAdd" method="POST">

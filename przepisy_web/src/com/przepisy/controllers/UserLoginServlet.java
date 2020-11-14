@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,6 +46,10 @@ public class UserLoginServlet extends HttpServlet {
 			 if (UserLoginDao.LogInUser(user)==1)
 			 {
 				 HttpSession session = request.getSession(true);
+				 Cookie loginCookie = new Cookie("user", login);
+				 loginCookie.setMaxAge(30*60);
+				 response.addCookie(loginCookie);
+				 //response.sendRedirect("index.jsp");
 				 Premium premium = new Premium();
 				 UserLoginDao.LoadUserDataByLogin(user, user.getLogin());
 				 PremiumDao.LoadPremiumInfo(premium, user.getId());
