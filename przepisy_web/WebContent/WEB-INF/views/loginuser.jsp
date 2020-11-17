@@ -12,6 +12,7 @@
 
 	
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/mainLogin.css"/>
+	<link href="//db.onlinewebfonts.com/c/4b5ae315f5df148f0ab479a7cedc9832?family=ISOCPEUR" rel="stylesheet" type="text/css"/>
 	
 	
     <title>GASTROFAZA LOGOWANIE</title>
@@ -21,27 +22,29 @@
 	  <main>
 		  <div class="container-flow">
 				<div>
-					<div class=" conteiner-login offset-3 col-6 mb-6">
+					<div class=" conteiner-login offset-4 col-4">
 
 						<div class="tytul">  
 								<h1>LOGOWANIE</h1>
 						</div>
 						
 						<form action="<%= request.getContextPath() %>/login" method="post">
-						  <div class="form-group offset-3 col-6 mb-6" >
+						  <div class="form-group offset-3 col-6" >
 							
 							<input type="text"  name="login" class="form-control" id="login" placeholder="LOGIN">
 						  </div>
 						  
-						  <div class="form-group offset-3 col-6 mb-6">
+						  <div class="form-group offset-3 col-6">
 	
 							<input type="password" name="password" class="form-control" id="password" placeholder="HASLO">
 						  </div>
-						  <button type="submit" value="Submit" class="btn btn-primary">Ugotujmy cos!</button>
+						  <button type="submit" value="Submit" class="btn btn-primary">UGOTUJMY COS!</button>
 						</form>
 						
-							<form class="register">
-								<a href="register">Zarejestruj sie</a>   
+							<form>
+								<div class="register">
+									<a href="${pageContext.request.contextPath}/register">Zarejestruj sie</a> 
+								</div>	 
 							</form>
 						
 				</div>
