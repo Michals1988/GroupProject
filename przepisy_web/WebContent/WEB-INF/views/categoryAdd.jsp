@@ -16,12 +16,12 @@ for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
 }
 }
-if(userName != null) response.sendRedirect("MainPage");
+if(userName == null) response.sendRedirect("login");
 %>
  <div align="center">
-  <h1>GASTROFAZA PANEL LOGOWANIA</h1>
+  <h1>DODAJ KATEGORIE</h1>
   <h5><%=request.getAttribute("errorMessage") %></h5>
-  <form action="<%= request.getContextPath() %>/login" method="post">
+  <form action="<%= request.getContextPath() %>/CategoriesAdd" method="post">
    <table style="with: 80%">
     <tr>
      <td>Nazwa kategorii</td>
@@ -34,9 +34,6 @@ if(userName != null) response.sendRedirect("MainPage");
    </table>
    <input type="submit" value="Submit" />
   </form>
-  <form action="<%= request.getContextPath() %>/register">
-   <input type="submit" value="Zarejestruj sie" />     
-   </form>
  </div>
 
 </body>
