@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>"succes</h1>
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
+	<h3>Witaj <%=userName %>, zalogowano pomyslnie.</h3>
+	<form action="<%= request.getContextPath() %>/Logout" method="post">
+	<input type="submit" value="Wyloguj" />
+	</form>
 </body>
 </html>

@@ -6,6 +6,16 @@
     <title>Jednostki</title>
 </head>
 <body>
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
     <center>
     	<form action="<%= request.getContextPath() %>/UnitAdd">
         	<input type="submit" value="Dodaj nowa jednostke" />                  	
@@ -27,5 +37,9 @@
             </c:forEach>
         </table>
     </div>   
+    	<h3>Witaj <%=userName %>, zalogowano pomyslnie. </h3>
+	<form action="<%= request.getContextPath() %>/Logout">
+	<input type="submit" value="Wyloguj" />
+	</form>
 </body>
 </html>

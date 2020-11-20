@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,6 +46,9 @@ public class UserLoginServlet extends HttpServlet {
 			 if (UserLoginDao.LogInUser(user)==1)
 			 {
 				 HttpSession session = request.getSession(true);
+				 Cookie loginCookie = new Cookie("user", login);
+				 loginCookie.setMaxAge(30*60);
+				 response.addCookie(loginCookie);
 				 Premium premium = new Premium();
 				 UserLoginDao.LoadUserDataByLogin(user, user.getLogin());
 				 PremiumDao.LoadPremiumInfo(premium, user.getId());
@@ -57,8 +61,10 @@ public class UserLoginServlet extends HttpServlet {
 				 System.out.println("sesja login usera"+session.getAttribute("login"));
 				 System.out.println("sesja email usera"+session.getAttribute("email"));
 				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
+				 //response.sendRedirect("/przepisy_web/MainPage");
+				 response.sendRedirect("MainPage");
 			 } else {
-				 System.out.println("user nie istnieje");
+				 System.out.println("/WEB-INF/views/loginuser.jsp");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
 				 request.setAttribute("errorMessage", "Invalid user or password");
 				 dispatcher.forward(request, response);
