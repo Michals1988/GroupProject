@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
- pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<body>
 <body>
 <%
 String userName = null;
@@ -23,12 +24,12 @@ if(userName != null) response.sendRedirect("MainPage");
   <form action="<%= request.getContextPath() %>/login" method="post">
    <table style="with: 80%">
     <tr>
-     <td>Nazwa uzytkownika</td>
-     <td><input type="text" name="login" /></td>
+     <td>Nazwa kategorii</td>
+     <td><input type="text" name="categoryCode" /></td>
     </tr>
     <tr>
-     <td>Haslo</td>
-     <td><input type="password" name="password" /></td>
+     <td>Opis</td>
+     <td><input type="text" name="categoryDescription" /></td>
     </tr>
    </table>
    <input type="submit" value="Submit" />
@@ -37,5 +38,6 @@ if(userName != null) response.sendRedirect("MainPage");
    <input type="submit" value="Zarejestruj sie" />     
    </form>
  </div>
+
 </body>
 </html>
