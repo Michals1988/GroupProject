@@ -38,6 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES ('64adbe62-dbdb-4879-a4c5-035cf0cb5486','Weganskie','Dania weganskie dla pedalow',0),('7721eb93-afd5-4619-b561-36d2e2b1f16b','Fast-Food','Kiebsy fryty i inne gowna dla pryszczatych',0);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 19:04:32
+-- Dump completed on 2020-11-22 19:25:51

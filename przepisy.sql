@@ -38,6 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES ('64adbe62-dbdb-4879-a4c5-035cf0cb5486','Weganskie','Dania weganskie dla pedalow',0),('7721eb93-afd5-4619-b561-36d2e2b1f16b','Fast-Food','Kiebsy fryty i inne gowna dla pryszczatych',0);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +81,6 @@ DROP TABLE IF EXISTS `components`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `components` (
   `id` char(36) NOT NULL,
-  `id_categories` char(36) NOT NULL,
   `id_unit` char(36) NOT NULL,
   `code` varchar(20) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
@@ -88,8 +88,6 @@ CREATE TABLE `components` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `FK_CC_CAT_idx` (`id_unit`),
-  KEY `FK_COMP_CAT_idx` (`id_categories`),
-  CONSTRAINT `FK_COMP_CAT` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`),
   CONSTRAINT `FK_COMP_UNITS` FOREIGN KEY (`id_unit`) REFERENCES `units` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -100,6 +98,7 @@ CREATE TABLE `components` (
 
 LOCK TABLES `components` WRITE;
 /*!40000 ALTER TABLE `components` DISABLE KEYS */;
+INSERT INTO `components` VALUES ('337aeead-afd5-46b1-b63c-ad96913f0cca','a35b6a69-fe0f-44c2-b9aa-00b77a6c92cf','Pomidor','pomidorek',0);
 /*!40000 ALTER TABLE `components` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,9 +204,11 @@ CREATE TABLE `recipes_header` (
   `video_link` varchar(255) DEFAULT NULL,
   `note` text,
   `photo_path` varchar(200) DEFAULT NULL,
+  `id_category` char(36) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `FK_RECH_USER_idx` (`id_user`),
+  CONSTRAINT `FK_RECH_CAT` FOREIGN KEY (`id`) REFERENCES `categories` (`id`),
   CONSTRAINT `FK_RECH_USER` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -305,7 +306,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('545a15cf-90b5-4181-91f3-5344c351ac3f','Jarek','fd35cc36b83015844a387a57f709a027be10a54691b9606c0d84d263bcfd6bb2','Jarek','aquillanie@gmail.com',1,0);
+INSERT INTO `users` VALUES ('545a15cf-90b5-4181-91f3-5344c351ac3f','Jarek','fd35cc36b83015844a387a57f709a027be10a54691b9606c0d84d263bcfd6bb2','Jarek','aquillanie@gmail.com',1,0),('eaaa7ceb-7914-4ba8-8182-aadd1e6b9faf','admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','admin','admin@wp.pl',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -318,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 19:06:22
+-- Dump completed on 2020-11-22 19:25:23

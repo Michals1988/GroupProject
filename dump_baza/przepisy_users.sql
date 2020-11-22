@@ -43,7 +43,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('545a15cf-90b5-4181-91f3-5344c351ac3f','Jarek','fd35cc36b83015844a387a57f709a027be10a54691b9606c0d84d263bcfd6bb2','Jarek','aquillanie@gmail.com',1,0);
+INSERT INTO `users` VALUES ('545a15cf-90b5-4181-91f3-5344c351ac3f','Jarek','fd35cc36b83015844a387a57f709a027be10a54691b9606c0d84d263bcfd6bb2','Jarek','aquillanie@gmail.com',1,0),('eaaa7ceb-7914-4ba8-8182-aadd1e6b9faf','admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','admin','admin@wp.pl',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 19:04:31
+-- Dump completed on 2020-11-22 19:25:51

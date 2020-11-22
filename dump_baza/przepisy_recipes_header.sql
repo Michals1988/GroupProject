@@ -32,9 +32,11 @@ CREATE TABLE `recipes_header` (
   `video_link` varchar(255) DEFAULT NULL,
   `note` text,
   `photo_path` varchar(200) DEFAULT NULL,
+  `id_category` char(36) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `FK_RECH_USER_idx` (`id_user`),
+  CONSTRAINT `FK_RECH_CAT` FOREIGN KEY (`id`) REFERENCES `categories` (`id`),
   CONSTRAINT `FK_RECH_USER` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -57,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 19:04:31
+-- Dump completed on 2020-11-22 19:25:51

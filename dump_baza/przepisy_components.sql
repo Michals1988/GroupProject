@@ -24,7 +24,6 @@ DROP TABLE IF EXISTS `components`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `components` (
   `id` char(36) NOT NULL,
-  `id_categories` char(36) NOT NULL,
   `id_unit` char(36) NOT NULL,
   `code` varchar(20) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
@@ -32,8 +31,6 @@ CREATE TABLE `components` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `FK_CC_CAT_idx` (`id_unit`),
-  KEY `FK_COMP_CAT_idx` (`id_categories`),
-  CONSTRAINT `FK_COMP_CAT` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`),
   CONSTRAINT `FK_COMP_UNITS` FOREIGN KEY (`id_unit`) REFERENCES `units` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,6 +41,7 @@ CREATE TABLE `components` (
 
 LOCK TABLES `components` WRITE;
 /*!40000 ALTER TABLE `components` DISABLE KEYS */;
+INSERT INTO `components` VALUES ('337aeead-afd5-46b1-b63c-ad96913f0cca','a35b6a69-fe0f-44c2-b9aa-00b77a6c92cf','Pomidor','pomidorek',0);
 /*!40000 ALTER TABLE `components` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-11 19:04:32
+-- Dump completed on 2020-11-22 19:25:51
