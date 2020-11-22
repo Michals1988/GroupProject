@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Jednostki</title>
+    <title>Kategorie</title>
 </head>
 <body>
 <%
@@ -17,25 +17,25 @@ for(Cookie cookie : cookies){
 if(userName == null) response.sendRedirect("login");
 %>
     <center>
-    	<form action="<%= request.getContextPath() %>/UnitAdd">
-        	<input type="submit" value="Dodaj nowa jednostke" />                  	
+    	<form action="<%= request.getContextPath() %>/CategoriesAdd">
+        	<input type="submit" value="Dodaj nowa kategorie" />                  	
          </form>    
     </center>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>List of Books</h2></caption>
+            <caption><h2>Lista kategorii</h2></caption>
             <tr>
-                <th>Jednostka</th>
+                <th>Kategoria</th>
                 <th>Opis</th>
 
             </tr>
-            <c:forEach var="listUnits" items="${listUnits}">
+            <c:forEach var="listCategories" items="${listCategories}">
                 <tr>
-                    <td><c:out value="${listUnits.code}" /></td>
-                    <td><c:out value="${listUnits.description}" /></td>
+                    <td><c:out value="${listCategories.code}" /></td>
+                    <td><c:out value="${listCategories.description}" /></td>
                 </tr>
             </c:forEach>
         </table>
-    </div>    
+    </div>   
 </body>
 </html>

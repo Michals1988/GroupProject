@@ -3,8 +3,8 @@ package com.przepisy.models;
 public class Components {
 	
 	private String id;
-	private String id_categories;
 	private String id_unit;
+	private String unit_descr;
 	private String code;
 	private String description;
 	private int active;
@@ -18,18 +18,18 @@ public class Components {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getId_categories() {
-		return id_categories;
-	}
-	public void setId_categories(String id_categories) {
-		this.id_categories = id_categories;
-	}
+	}	
 	public String getId_unit() {
 		return id_unit;
 	}
+	public String getUnit_descr() {
+		return unit_descr;
+	}
 	public void setId_unit(String id_unit) {
 		this.id_unit = id_unit;
+	}
+	public void setUnit_descr(String unit_descr) {
+		this.unit_descr = unit_descr;
 	}
 	public String getCode() {
 		return code;

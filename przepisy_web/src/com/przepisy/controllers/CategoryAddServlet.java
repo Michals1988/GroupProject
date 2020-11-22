@@ -21,7 +21,7 @@ public class CategoryAddServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		System.out.println("print1: "+request.getSession().getId());
 		System.out.println("print2: "+request.getSession(false));
 		session = request.getSession(false);
