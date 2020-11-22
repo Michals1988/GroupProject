@@ -14,13 +14,10 @@ public class User {
 	public User() {
 		this.active = true;
 		this.admin = false;
-	}
-	
+	}	
 	public String getGeneratedId() {
 		return java.util.UUID.randomUUID().toString();
-	}
-	
-	
+	}	
 	public String getId() {
 		return id;
 	}
@@ -31,8 +28,7 @@ public class User {
 		return login;
 	}
 	public String getPasswordHashed() {
-		Hash256 hashed_password = new Hash256();
-		return hashed_password.HashPassword(this.password);
+		return Hash256.HashPassword(this.password);
 	}
 	public void setLogin(String login) {
 		this.login = login;

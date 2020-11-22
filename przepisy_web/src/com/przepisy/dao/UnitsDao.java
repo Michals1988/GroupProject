@@ -2,7 +2,6 @@ package com.przepisy.dao;
 
 import com.przepisy.connection.ConnectionMySQLExceptHandler;
 import com.przepisy.connection.ConnectionMysql;
-import com.przepisy.models.Premium;
 import com.przepisy.models.Units;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +34,14 @@ public class UnitsDao {
                 	}
 
             } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }
 		return result;
 	}
 	
 	public static void AddNewUnit(Units unit) {
 		
-		int result =0;
+
 		
 		String ADD_UNIT_QUERY = "insert into units values(?,?,?)";
 		
@@ -57,13 +55,12 @@ public class UnitsDao {
 
                 System.out.println(preparedStatement);
                        
-                result = preparedStatement.executeUpdate();
+                preparedStatement.executeUpdate();
                 
              
 
             } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }			
 	}
 	
@@ -95,8 +92,7 @@ public class UnitsDao {
                 	}
 
             } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }		         
         return listUnits;
     }

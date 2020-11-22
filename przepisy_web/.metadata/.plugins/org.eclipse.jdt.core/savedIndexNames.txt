@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Jarek\ztus-proejkt\ztus-proejkt\przepisy_web\.metadata\.plugins\org.eclipse.jdt.core
+3707044295.index
+1530128564.index
+44640000.index

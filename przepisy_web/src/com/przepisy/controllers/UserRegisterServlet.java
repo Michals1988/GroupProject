@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.przepisy.dao.UsersRegisterDao;
 import com.przepisy.models.User;
-import com.przepisy.security.Hash256;
+
 
 /**
  * Servlet implementation class UserServlet
@@ -43,7 +43,6 @@ public class UserRegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Hash256 hashed_password = new Hash256();
 		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");

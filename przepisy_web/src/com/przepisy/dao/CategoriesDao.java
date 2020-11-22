@@ -32,16 +32,14 @@ public class CategoriesDao {
                 	  result = resultSet.getInt("xx");                 	
                 	}
 
-            } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            } catch (SQLException e) {           	
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }
 		return result;
 	}
 	
 	public static void AddNewCategory(Categories category) {
 		
-		int result =0;
 		
 		String ADD_CATEGORY_QUERY = "insert into categories values(?,?,?,?)";
 		
@@ -56,13 +54,12 @@ public class CategoriesDao {
 
                 System.out.println(preparedStatement);
                        
-                result = preparedStatement.executeUpdate();
+                preparedStatement.executeUpdate();
                 
              
 
             } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }			
 	}
 	
@@ -96,8 +93,7 @@ public class CategoriesDao {
                 	}
 
             } catch (SQLException e) {
-            	ConnectionMySQLExceptHandler sql_handler = new ConnectionMySQLExceptHandler();
-            	sql_handler.printSQLException(e);
+            	ConnectionMySQLExceptHandler.printSQLException(e);
             }		         
         return listCategories;
     }

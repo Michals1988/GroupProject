@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\Jarek\ztus-proejkt\ztus-proejkt\przepisy_web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4183001924.index
+\przepisy_web\src
