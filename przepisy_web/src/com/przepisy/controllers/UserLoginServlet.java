@@ -54,12 +54,14 @@ public class UserLoginServlet extends HttpServlet {
 				 PremiumDao.LoadPremiumInfo(premium, user.getId());
 				 session.setAttribute("id", user.getId());
 				 session.setAttribute("login", user.getLogin());
+				 session.setAttribute("name", user.getName());
 				 session.setAttribute("email", user.getEmail());
 				 session.setAttribute("premium", premium.getLevel());
 				 System.out.println("zalogowano");
 				 System.out.println("sesja 'id usera: "+session.getAttribute("id"));
-				 System.out.println("sesja login usera"+session.getAttribute("login"));
-				 System.out.println("sesja email usera"+session.getAttribute("email"));
+				 System.out.println("sesja login usera "+session.getAttribute("login"));
+				 System.out.println("sesja imie usera "+session.getAttribute("name"));
+				 System.out.println("sesja email usera "+session.getAttribute("email"));
 				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
 				 //response.sendRedirect("/przepisy_web/MainPage");
 				 response.sendRedirect("MainPage");

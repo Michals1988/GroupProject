@@ -68,7 +68,7 @@ public class UserLoginDao {
     				user.setPassword(resultSet.getString("password")); 
     				user.setName(resultSet.getString("name")); 
     				user.setEmail(resultSet.getString("email")); 
-    				user.setActive(resultSet.getBoolean("actvie")); 
+    				user.setActive(resultSet.getBoolean("active")); 
     				user.setAdmin(resultSet.getBoolean("admin")); 
     		}
 
