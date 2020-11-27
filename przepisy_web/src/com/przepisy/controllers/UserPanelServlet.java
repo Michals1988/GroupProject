@@ -5,17 +5,14 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.przepisy.dao.PremiumDao;
 import com.przepisy.dao.UserDao;
 import com.przepisy.dao.UserLoginDao;
-import com.przepisy.models.Premium;
 import com.przepisy.models.User;
+import com.przepisy.utility.Image;
 
 
 @WebServlet("/UserPanel")
@@ -31,6 +28,8 @@ public class UserPanelServlet extends HttpServlet {
         request.setAttribute("login", session.getAttribute("login"));
         request.setAttribute("name", session.getAttribute("name"));
         request.setAttribute("email", session.getAttribute("email"));
+        String img_path = (String) session.getAttribute("login");
+        request.setAttribute("img_path", img_path);
         int premium = (int) session.getAttribute("premium");
         String isPremium;
         if (premium == 0) {
@@ -68,7 +67,7 @@ public class UserPanelServlet extends HttpServlet {
 		 } else {
 			 System.out.println("STARE HASLO NIEPRAWIDLOWE");
 		 }
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }

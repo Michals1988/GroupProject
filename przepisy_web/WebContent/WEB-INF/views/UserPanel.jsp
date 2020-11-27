@@ -18,6 +18,9 @@ for(Cookie cookie : cookies){
 if(userName == null) response.sendRedirect("login");
 %>
 <table style="with: 80%">
+	<tr>
+	 <img src = <%=request.getAttribute("img_path")%> />
+	</tr>
     <tr>
      <td>login</td>
      <td><p><%=request.getAttribute("login")%></p></td>
@@ -52,8 +55,16 @@ if(userName == null) response.sendRedirect("login");
 	<tr>
 	<td><input type="submit" value="Zmien haslo"/>
 	</td>
-	</tr>
+	</tr>	
    </table>
    </form>
+   
+   
+	<form action="<%= request.getContextPath() %>/ImageUploadServlet" method="post" enctype ="multipart/form-data">
+	<input type="file" name ="file"/>
+	<input type="submit" value ="Upload"/>
+	</form>	
+
+	
 </body>
 </html>
