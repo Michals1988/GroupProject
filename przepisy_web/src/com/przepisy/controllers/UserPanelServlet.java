@@ -29,6 +29,8 @@ public class UserPanelServlet extends HttpServlet {
         request.setAttribute("name", session.getAttribute("name"));
         request.setAttribute("email", session.getAttribute("email"));
         String img_path = (String) session.getAttribute("login");
+        img_path = Image.GetUserAvatar(img_path);
+        System.out.println(img_path);
         request.setAttribute("img_path", img_path);
         int premium = (int) session.getAttribute("premium");
         String isPremium;

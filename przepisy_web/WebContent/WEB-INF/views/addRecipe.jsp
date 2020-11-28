@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
   <h1>GASTROFAZA DODAWANIE PRZEPISU</h1>
   <h5><%=request.getAttribute("errorMessage") %></h5>
   <form action="<%= request.getContextPath() %>/login" method="post">
