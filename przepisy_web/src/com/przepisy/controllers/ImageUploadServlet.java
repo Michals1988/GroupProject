@@ -54,6 +54,7 @@ public class ImageUploadServlet extends HttpServlet {
 		System.out.println("wrzucono plik");
 		
 		Image.ResizeImage(100,100, "C:/PROJEKT/Images/" + fileName+"."+extension);
+		response.sendRedirect("UserPanel");
 	}
 
 }
