@@ -14,7 +14,7 @@
 	
 	
 	
-    <title>GASTROFAZA LOGOWANIE</title>
+    <title>GASTROFAZA REJESTRACJA</title>
   </head>
   <body>
   
@@ -53,7 +53,7 @@
 						
 							<form>
 								<div class="register">
-									<a href="${pageContext.request.contextPath}/login">Jenak mam juz konto</a> 
+									<a href="${pageContext.request.contextPath}/login">Jednak mam juz konto</a> 
 								</div>								
 							</form>
 						
