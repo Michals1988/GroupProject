@@ -14,7 +14,7 @@
 	
 	
 	
-    <title>GASTROFAZA LOGOWANIE</title>
+    <title>GASTROFAZA REJESTRACJA</title>
   </head>
   <body>
   
@@ -38,12 +38,12 @@
 							<input type="password" name="RegisterPage_Password" class="form-control" id="password">
 						  </div>
 						  
-						  <div class="form-group offset-3 col-6 mb-6" name="RegisterPage_Login">
+						  <div class="form-group offset-3 col-6 mb-6">
 							<label>IMIE</label>
 							<input type="text"  name="RegisterPage_Login" class="form-control" id="login">
 						  </div>
 						  
-						  <div class="form-group offset-3 col-6 mb-6" name="RegisterPage_Mail">
+						  <div class="form-group offset-3 col-6 mb-6">
 							<label>E-MAIL</label>
 							<input type="email"  name="RegisterPage_Email" class="form-control" id="email">
 						  </div>
@@ -53,7 +53,7 @@
 						
 							<form>
 								<div class="register">
-									<a href="${pageContext.request.contextPath}/login">Jenak mam juz konto</a> 
+									<a href="${pageContext.request.contextPath}/login">Jednak mam juz konto</a> 
 								</div>								
 							</form>
 						
