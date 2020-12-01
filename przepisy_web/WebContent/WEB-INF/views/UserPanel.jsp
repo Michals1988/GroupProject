@@ -63,7 +63,7 @@ if(userName == null) response.sendRedirect("login");
    
    
 	<form action="<%= request.getContextPath() %>/ImageUploadServlet" method="post" enctype ="multipart/form-data">
-	<input type="file" name ="file"/>
+	<input type="file" name ="file" accept=".png,.jpg"/>
 	<input type="submit" value ="Upload"/>
 	</form>	
 

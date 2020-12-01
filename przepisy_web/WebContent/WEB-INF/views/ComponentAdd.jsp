@@ -6,7 +6,16 @@
     <title>Dynamic Drop Down List Demo - CodeJava.net</title>
 </head>
 <body>
- 
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
 <div align="center">
 <form action="<%= request.getContextPath() %>/ComponentAdd" method="post">
     <h2>Dynamic Drop Down List Demo</h2>
