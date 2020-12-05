@@ -49,27 +49,27 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link" href="..."
-						name="mainPage_linkDoGlownej">Główna strona<span
+						name="mainPage_linkMainPage">Główna strona<span
 							class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="..."
-						name="mainPage_linkDodajPrzepis">Dodaj przepis</a></li>
+						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
 					<li class="nav-item"><a class="nav-link" href="..."
-						name="mainPage_linkDoUlubione">Ulubione<span class="sr-only"></span></a>
+						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
 						role="button" data-toggle="dropdown"> Kategorie </a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="..."
-								name="mainPage_linkKategoriaWloska">Kuchnia włoska</a> <a
+								name="mainPage_linkCategoryItaly">Kuchnia włoska</a> <a
 								class="dropdown-item" href="..."
-								name="mainPage_linkKategoriaPolska">Kuchnia polska</a> <a
+								name="mainPage_linkCategoryPolish">Kuchnia polska</a> <a
 								class="dropdown-item" href="..."
-								name="mainPage_linkKategoriaSrodziemnomorska">Kuchnia
+								name="mainPage_linkCategoryMediterranean">Kuchnia
 								śródziemnomorska</a> <a class="dropdown-item" href="..."
-								name="mainPage_linkKategoriatajska">Kuchnia tajska</a> <a
+								name="mainPage_linkCategoryThai">Kuchnia tajska</a> <a
 								class="dropdown-item" href="..."
-								name="mainPage_linkKategoriaOrientalna">Kuchnia orientalna</a>
+								name="mainPage_linkCategoryOrient">Kuchnia orientalna</a>
 						</div></li>
 
 					<li class="nav-item dropdown"><a
@@ -78,7 +78,7 @@
 						<div class="dropdown-menu">
 							<form class="form-inline">
 								<input class="form-control mr-sm-2" type="search"
-									placeholder="Search" name="mainPage_Szukaj">
+									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
 									type="submit">Search</button>
 							</form>
@@ -86,7 +86,7 @@
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link" href="...." name="mainPage_NazwaUzytkownik">Nazwa
+					<a class="nav-link" href="...." name="mainPage_UserName">Nazwa
 						użytkownika<span class="sr-only"></span>
 					</a>
 				</form>
@@ -107,15 +107,15 @@
 
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_Zdjecie">
+				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Ocena">
+				<div class="col-2 login" name="mainPage_Rating">
 					<h2>4.8/5.0</h2>
 				</div>
 				<div class="col-6 nazwa">
-					<div name="mainPage_NazwaPrzepisuKategoria">
+					<div name="mainPage_RecipeNameAndCategory">
 						<h2>Risotto</h2>
 						<h3>Dania włoskie</h3>
 					</div>
@@ -123,15 +123,15 @@
 			</div>
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_Zdjecie">
+				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/padthai.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Ocena">
+				<div class="col-2 login" name="mainPage_Rating">
 					<h2>4.5/5.0</h2>
 				</div>
 				<div class="col-6 nazwa">
-					<div name="mainPage_NazwaPrzepisuKategoria">
+					<div name="mainPage_RecipeNameAndCategory">
 						<h2>Pad Thai</h2>
 						<h3>Dania tajskie</h3>
 					</div>
@@ -139,15 +139,15 @@
 			</div>
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_Zdjecie">
+				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/krupnik.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Ocena">
+				<div class="col-2 login" name="mainPage_Rating">
 					<h2>4.3/5.0</h2>
 				</div>
 				<div class="col-6 nazwa">
-					<div name="mainPage_NazwaPrzepisuKategoria">
+					<div name="mainPage_RecipeNameAndCategory">
 						<h2>Krupnik</h2>
 						<h3>Dania polskie</h3>
 					</div>
@@ -155,30 +155,30 @@
 			</div>
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_Zdjecie">
+				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/schabowy.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Ocena">
+				<div class="col-2 login" name="mainPage_Rating">
 					<h2>4.1/5.0</h2>
 				</div>
 				<div class="col-6 nazwa">
-					<div name="mainPage_NazwaPrzepisuKategoria">
+					<div name="mainPage_RecipeNameAndCategory">
 						<h2>Schabowy z ziemniakami</h2>
 						<h3>Dania polskie</h3>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_Zdjecie">
+				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/pizzaananas.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Ocena">
+				<div class="col-2 login" name="mainPage_Rating">
 					<h2>1.5/5.0</h2>
 				</div>
 				<div class="col-6 nazwa">
-					<div name="mainPage_NazwaPrzepisuKategoria">
+					<div name="mainPage_RecipeNameAndCategory">
 						<h2>Pizza z ananasem</h2>
 						<h3>Dania włoskie</h3>
 					</div>
