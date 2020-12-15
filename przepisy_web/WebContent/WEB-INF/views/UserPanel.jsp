@@ -19,9 +19,7 @@ if(userName == null) response.sendRedirect("login");
 %>
 <table style="with: 80%">
 	<tr>
-	<td>
-	 <img src = "<%=request.getAttribute("img_path")%>" />
-	 </td>
+	 <img src = <%=request.getAttribute("img_path")%> />
 	</tr>
     <tr>
      <td>login</td>
