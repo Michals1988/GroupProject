@@ -115,6 +115,10 @@
 							  <input type="file" class="form-control" id="inputGroupFile02" name="RecipeAdd_uploadFile">
 						</div>
 							<div class="form-group  col-12 ">
+								<label>Skrocony opis przepisu</label>
+								<textarea class="form-control" name="RecipeAdd_shortDescription" rows="2"></textarea>
+							</div>
+							<div class="form-group  col-12 ">
 								<label>Tresc przepisu</label>
 								<textarea class="form-control" name="RecipeAdd_text" rows="4"></textarea>
 						  </div>
