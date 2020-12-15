@@ -69,8 +69,8 @@ public class ComponentsDao {
 		List<Components> listComponents = new ArrayList<>();
          
         String SELECT_ACTIVE_COMPONENTS = "select a.id, a.id_unit, b.code as unit_descr,a.code, a.description,a.active from components as a"
-        									+ "left join units as b"
-        									+ "on a.id_unit = b.id";
+        									+ " left join units as b"
+        									+ " on a.id_unit = b.id";
          
         Connection con = ConnectionMysql.getCon();
         
@@ -89,6 +89,9 @@ public class ComponentsDao {
                 	  String description = resultSet.getString("description");
                 	  int active = resultSet.getInt("active"); 
                 	  
+                	  System.out.println(id);
+                	  System.out.println(description);
+                	  
                 	  Components component = new Components();
                 	  component.setId(id);
                 	  component.setId_unit(id_unit);
@@ -103,6 +106,37 @@ public class ComponentsDao {
             	ConnectionMySQLExceptHandler.printSQLException(e);
             }		         
         return listComponents;
+    }
+	
+	public static Components LoadComponentById  (String id) {
+
+
+        Components component = new Components();
+
+        String QUERY_COMPONENT_LOAD = "select id,id_unit,code,description,active from components where id =?"; 
+
+        Connection con = ConnectionMysql.getCon();
+
+        try (
+                PreparedStatement preparedStatement = con.prepareStatement(QUERY_COMPONENT_LOAD)) {
+                preparedStatement.setString(1, id);
+
+                System.out.println(preparedStatement);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                      component.setId(resultSet.getString("id"));         
+                      component.setId_unit(resultSet.getString("id_unit"));
+                      component.setCode(resultSet.getString("code"));
+                      component.setDescription(resultSet.getString("description"));
+                      component.setActive(resultSet.getInt("active"));
+                    }
+
+            } catch (SQLException e) {
+                ConnectionMySQLExceptHandler.printSQLException(e);
+            }
+        return component;
     }
 
 }

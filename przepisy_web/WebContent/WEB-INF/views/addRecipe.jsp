@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -39,22 +40,25 @@ if(userName == null) response.sendRedirect("login");
     </tr>
         <tr>
      <td>Składniki</td>
+    
      <td>
-     <form action="<%= request.getContextPath() %>/showComponents" method="post">
+    </td>
+    </tr>
+   </table>
+      <input type="submit" value="Dodaj przepis" /></form>
+    <form action="addComponent" method="post">
      <select name="component">
-            <c:forEach items="${listComponents}" var="compontents">
-                <option value="${listComponents.id}"
-                    <c:if test="${listComponents.id eq selectedComponentId}">selected="selected"</c:if>
+            <c:forEach items="${listComponents}" var="Components">
+                <option value="${Components.id}"
+                    <c:if test="${Components.id eq selectedComponentId}">selected="selected"</c:if>
                     >
-                    ${listComponents.code}
+                    ${Components.description}
                 </option>
             </c:forEach>
         </select>
-        <input type="submit" value="Dodaj składnik" /></form></td>
-    </tr>
-   </table>
-   <input type="submit" value="Dodaj przepis" />
-  </form>
+        <input type="submit" value="Dodaj składnik" /></form>
+
+
  </div>
 
 </body>

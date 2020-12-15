@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Recipe {
 	
-	private RecipeHeader recipe_header;
-	private ArrayList<RecipeRow> recipe_row;
+	public RecipeHeader recipe_header;
+	public ArrayList<RecipeRow> recipe_row;
 	
 	
 	public RecipeHeader getRecipe_header() {
