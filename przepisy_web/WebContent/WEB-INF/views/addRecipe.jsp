@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,30 +19,41 @@ if(userName == null) response.sendRedirect("login");
 %>
   <h1>GASTROFAZA DODAWANIE PRZEPISU</h1>
   <h5><%=request.getAttribute("errorMessage") %></h5>
-  <form action="<%= request.getContextPath() %>/login" method="post">
+  <form action="<%= request.getContextPath() %>/addRecipe" method="post">
    <table style="with: 80%">
     <tr>
      <td>Nazwa przepisu</td>
-     <td><input type="text" name="login" /></td>
+     <td><input type="text" name="recipeName" /></td>
     </tr>
     <tr>
-     <td>Opis</td>
-     <td><input type="text" name="password" /></td>
+     <td>Krótki opis</td>
+     <td><input type="text" name="shortDescription" /></td>
     </tr>
        <tr>
-     <td>Link do video</td>
-     <td><input type="text" name="password" /></td>
+     <td>Długi opis</td>
+     <td><input type="text" name="longDescription" /></td>
     </tr>
         <tr>
      <td>Kategoria</td>
-     <td><input type="text" name="password" /></td>
+     <td><input type="text" name="category" /></td>
     </tr>
         <tr>
      <td>Składniki</td>
-     <td><input type="text" name="password" /></td>
+     <td>
+     <form action="<%= request.getContextPath() %>/showComponents" method="post">
+     <select name="component">
+            <c:forEach items="${listComponents}" var="compontents">
+                <option value="${listComponents.id}"
+                    <c:if test="${listComponents.id eq selectedComponentId}">selected="selected"</c:if>
+                    >
+                    ${listComponents.code}
+                </option>
+            </c:forEach>
+        </select>
+        <input type="submit" value="Dodaj składnik" /></form></td>
     </tr>
    </table>
-   <input type="submit" value="Submit" />
+   <input type="submit" value="Dodaj przepis" />
   </form>
  </div>
 
