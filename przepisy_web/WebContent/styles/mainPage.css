@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+body
+{
+		background-color: maroon;
+		background-position:  top center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+		width: 95%;
+		margin: auto;
+}
+
+div.login
+{
+	margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	overflow: auto;
+	text-align: center;
+	padding: 10px 10px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav{
+	width:100%;
+}
+div.nazwa
+{
+	margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	overflow: auto;
+	text-align: center;
+	padding: 10px 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+div.login img{
+	width: 95%;
+}
+
+
+div.tytul
+{
+	
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #2F3336;
+	background-position: top center;
+	background-size: cover;
+	border-radius: 30px;
+	overflow: auto;
+	display: block;
+}
+
+h1
+{
+	color: #FFC72C;
+	text-align: center;
+
+}
+
+h2{
+	margin:auto;
+	margin-bottom: auto;
+	margin-top: auto;
+}
+
+div.form-group
+{
+	padding-top: 10px;
+}
+
+.dodaj{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:auto;
+}
+
+
+a:link
+{
+	color: black;
+}
+
+a:hover
+{
+	color: black;
+}

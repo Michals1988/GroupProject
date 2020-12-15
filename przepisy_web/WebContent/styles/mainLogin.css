@@ -33,7 +33,7 @@ div.tytul
 	margin-left: auto;
     margin-right: auto;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	padding-left: 15px;
 	padding-right: 15px;
 	background-color: #2F3336;
@@ -52,8 +52,8 @@ h1
 
 div.form-group
 {
-	margin-top: 20px;
-	padding-top: 10px;
+	margin-top: 5px;
+	padding-top: 5px;
 }
 
 
@@ -68,6 +68,7 @@ div.register
 	background-color: rgba(255, 255, 255, 0.95);
 }
 
+
 a:link
 {
 	color: #000000;
@@ -75,7 +76,7 @@ a:link
 
 a:hover
 {
-	color: #2a006b;
+	color: #000000;
 }
 
 a:active
