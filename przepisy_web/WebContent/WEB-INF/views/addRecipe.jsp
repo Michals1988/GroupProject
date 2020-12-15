@@ -87,7 +87,7 @@
 						</div>
 						<div class="input-group">
 							  <label class="input-group-text col-3" for="inputGroupSelect01">Kategoria</label>
-									<select class="form-select col-9">
+									<select class="form-select col-9" name="RecipeAdd_Category">
 										<option selected>Wybierz kategorie potrawy</option>
 										  <option value="1">Kuchnia tajska</option>
 										  <option value="2">Kuchnia polska</option>
@@ -96,7 +96,13 @@
 						</div>
 						<div class="input-group mb-0">
 							  <label class="input-group-text" for="inputGroupSelect01">Skladnik</label>
-									<select class="form-select">
+							  		<select class="form-select" name="RecipeAdd_ingredientsList">
+										<option selected>Wybierz nazwę składnika</option>
+										  <option value="1">Mąka</option>
+										  <option value="2">Mleko</option>
+										  <option value="3">Jajko</option>
+									</select>
+									<select class="form-select" name="RecipeAdd_units">
 										<option selected>Wybierz jednostke</option>
 										  <option value="1">gr.</option>
 										  <option value="2">ml.</option>
@@ -104,9 +110,9 @@
 									</select>
 									<input type="text"  name="RecipeAdd_ingredients" class="form-control" id="ingredients">
 						</div>
-						<button class="btn btn-outline-secondary" type="button">Kolejny skladnik</button>
+						<button class="btn btn-outline-secondary" type="button" name="RecipeAdd_nextIngredient">Kolejny skladnik</button>
 						<div class="input-group mb-0">
-							  <input type="file" class="form-control" id="inputGroupFile02">
+							  <input type="file" class="form-control" id="inputGroupFile02" name="RecipeAdd_uploadFile">
 						</div>
 							<div class="form-group  col-12 ">
 								<label>Tresc przepisu</label>
