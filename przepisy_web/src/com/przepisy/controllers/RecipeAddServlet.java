@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.przepisy.dao.ComponentsDao;
 import com.przepisy.models.Components;
 import com.przepisy.models.Recipe;
 import com.przepisy.models.RecipeRow;
-import com.przepisy.models.User;
 
 @WebServlet("/addRecipe")
 public class RecipeAddServlet extends HttpServlet {
@@ -66,8 +66,17 @@ public class RecipeAddServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String action = request.getServletPath();
 		String componentId = request.getParameter("component");
+		
+		String componentsJSON = request.getParameter("hiddenComponents");
+		Gson gson = new Gson();
+		String[] componentsIds = gson.fromJson(componentsJSON, String[].class);
+		
+		// SPRAWDZENIE CZY WYSWIETLA DANE Z JSONA
+		for (String comp : componentsIds) {
+			System.out.println(comp);
+		}
 
-		if (action == "addRecipe") {
+		/*if (action == "addRecipe") {
 			String recipeName = (String) request.getParameter("recipeName");
 			String shortDescription = (String) request.getParameter("shortDescription");
 			String longDescription = (String) request.getParameter("longDescription");
@@ -87,9 +96,9 @@ public class RecipeAddServlet extends HttpServlet {
 			recipe.recipe_row.add(recipeRow);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/addRecipe.jsp");
 			dispatcher.forward(request, response);
-		}
+		}*/
 
-		User user = new User();
+		//User user = new User();
 
 		doGet(request, response);
 	}

@@ -6,6 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/script.js"></script>
 </head>
 <body>
 <%
@@ -19,8 +20,8 @@ for(Cookie cookie : cookies){
 if(userName == null) response.sendRedirect("login");
 %>
   <h1>GASTROFAZA DODAWANIE PRZEPISU</h1>
-  <h5><%=request.getAttribute("errorMessage") %></h5>
   <form action="<%= request.getContextPath() %>/addRecipe" method="post">
+  <input type="hidden" id="hiddenComponents" name="hiddenComponents" value=""/>
    <table style="with: 80%">
     <tr>
      <td>Nazwa przepisu</td>
@@ -45,9 +46,7 @@ if(userName == null) response.sendRedirect("login");
     </td>
     </tr>
    </table>
-      <input type="submit" value="Dodaj przepis" /></form>
-    <form action="addComponent" method="post">
-     <select name="component">
+     <select id="componentComboBox" name="component">
             <c:forEach items="${listComponents}" var="Components">
                 <option value="${Components.id}"
                     <c:if test="${Components.id eq selectedComponentId}">selected="selected"</c:if>
@@ -56,10 +55,8 @@ if(userName == null) response.sendRedirect("login");
                 </option>
             </c:forEach>
         </select>
-        <input type="submit" value="Dodaj składnik" /></form>
-
-
- </div>
-
+		<div id="componentsQty"></div>
+		<input type="submit" value="Dodaj przepis" onClick="componentsToJSON();" /></form>
+		<input id="addComponentButton" type="submit" value="Dodaj składnik" onclick="addSelectedComponent();" />
 </body>
 </html>
