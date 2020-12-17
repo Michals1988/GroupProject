@@ -39,7 +39,7 @@ public class RecipeAddServlet extends HttpServlet {
 		String userId = (String) session.getAttribute("id");
 		
 		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		System.out.println("USER ID ---- " + userId);
 		
@@ -67,8 +67,6 @@ public class RecipeAddServlet extends HttpServlet {
 		}
 		
 		Recipe recipe = new Recipe();
-		RecipeRow recipeRow = new RecipeRow();
-		
 		
 		System.out.println("RECIPE ID ------  " + recipeId);
 		
@@ -84,6 +82,7 @@ public class RecipeAddServlet extends HttpServlet {
 		
 		int componentPosition = 0;
 		for (String comp : componentsIds) {
+			RecipeRow recipeRow = new RecipeRow();
 			recipeRow.setId(java.util.UUID.randomUUID().toString());
 			System.out.println("RECIPE ROW ID " + recipeRow.getId());
 			recipeRow.setId_recipe(recipeId);
