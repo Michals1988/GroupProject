@@ -22,6 +22,7 @@ if(userName == null) response.sendRedirect("login");
   <h1>GASTROFAZA DODAWANIE PRZEPISU</h1>
   <form action="<%= request.getContextPath() %>/addRecipe" method="post">
   <input type="hidden" id="hiddenComponents" name="hiddenComponents" value=""/>
+  <input type="hidden" id="hiddenQta" name="hiddenQta" value=""/>
    <table style="with: 80%">
     <tr>
      <td>Nazwa przepisu</td>
@@ -55,6 +56,7 @@ if(userName == null) response.sendRedirect("login");
                 </option>
             </c:forEach>
         </select>
+        <input id="componentsQta" type="number" name="componentsQta" />
 		<div id="componentsQty"></div>
 		<input type="submit" value="Dodaj przepis" onClick="componentsToJSON();" /></form>
 		<input id="addComponentButton" type="submit" value="Dodaj składnik" onclick="addSelectedComponent();" />

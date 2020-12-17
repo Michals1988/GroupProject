@@ -1,12 +1,13 @@
 package com.przepisy.controllers;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.przepisy.dao.ComponentsDao;
+import com.przepisy.dao.RecipeDao;
 import com.przepisy.models.Components;
 import com.przepisy.models.Recipe;
 import com.przepisy.models.RecipeRow;
@@ -22,85 +24,91 @@ import com.przepisy.models.RecipeRow;
 public class RecipeAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	Recipe recipe;
-	RecipeRow recipeRow = new RecipeRow();
-
 	public RecipeAddServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		try {
-			/*request.setAttribute("recipeName", session.getAttribute("recipeName"));
-			request.setAttribute("shortDescription", session.getAttribute("shortDescription"));
-			request.setAttribute("longDescription", session.getAttribute("longDescription"));
-			request.setAttribute("category", session.getAttribute("category"));
-			request.setAttribute("premium", session.getAttribute("premium"));*/
-			GenerateComponentsList(request, response);
-
-		} catch (NullPointerException e) {
-			System.out.println("Sesja wygasła. Redirect do strony logowania");
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-			// request.setAttribute("errorMessage", " ");
-			Cookie[] cookies = request.getCookies();
-			if (cookies != null) {
-				for (Cookie cookie : cookies) {
-					if (cookie.getName().equals("JSESSIONID")) {
-						System.out.println("JSESSIONID=" + cookie.getValue());
-					}
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
-					System.out.println("COOKIES DESTROYED BITCH");
-				}
-			}
-			response.sendRedirect("login");
-		}
+		GenerateComponentsList(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 		HttpSession session = request.getSession(false);
+		String userId = (String) session.getAttribute("id");
+		
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		System.out.println("USER ID ---- " + userId);
+		
+		String recipeId = java.util.UUID.randomUUID().toString();
 		String action = request.getServletPath();
 		String componentId = request.getParameter("component");
 		
+		String recipeName = request.getParameter("recipeName");
+		String shortDescription = request.getParameter("shortDescription");
+		String longDescription = request.getParameter("longDescription");
+		String category = request.getParameter("category");
+		
 		String componentsJSON = request.getParameter("hiddenComponents");
+		String qtaJSON = request.getParameter("hiddenQta");
 		Gson gson = new Gson();
 		String[] componentsIds = gson.fromJson(componentsJSON, String[].class);
+		String[] componentsQta = gson.fromJson(qtaJSON, String[].class);
 		
 		// SPRAWDZENIE CZY WYSWIETLA DANE Z JSONA
 		for (String comp : componentsIds) {
-			System.out.println(comp);
+			System.out.println("JEBANY JSON WYSWIETLA MI SKLADNIK" + comp);
 		}
-
-		/*if (action == "addRecipe") {
-			String recipeName = (String) request.getParameter("recipeName");
-			String shortDescription = (String) request.getParameter("shortDescription");
-			String longDescription = (String) request.getParameter("longDescription");
-			String category = (String) request.getParameter("category");
-		} else if (action == request.getContextPath() +"/showComponents") {
-			System.out.println("----------- WESZŁEM");
+		for (String qta : componentsQta) {
+			System.out.println("JEBANY JSON WYSWIETLA MI ilosc" + qta);
+		}
+		
+		Recipe recipe = new Recipe();
+		RecipeRow recipeRow = new RecipeRow();
+		
+		
+		System.out.println("RECIPE ID ------  " + recipeId);
+		
+		recipe.recipe_header.setId(recipeId);
+		recipe.recipe_header.setName(recipeName);
+		//recipe.recipe_header.generateId();
+		recipe.recipe_header.setDescription(shortDescription);
+		recipe.recipe_header.setNote(longDescription);
+		recipe.recipe_header.setCategoryId(category);
+		recipe.recipe_header.setActive(1);
+		recipe.recipe_header.setUserId(userId);
+		recipe.recipe_header.setData_creation(formatter.format(date));
+		
+		int componentPosition = 0;
+		for (String comp : componentsIds) {
 			recipeRow.setId(java.util.UUID.randomUUID().toString());
-			recipeRow.setComponent(ComponentsDao.LoadComponentById(componentId));
+			System.out.println("RECIPE ROW ID " + recipeRow.getId());
+			recipeRow.setId_recipe(recipeId);
+			//recipeRow.setId_recipe(recipe.recipe_header.getId());
+			recipeRow.setComponentId(comp);
+			recipeRow.setComponente_qta(Float.parseFloat(componentsQta[componentPosition]));
+			recipeRow.setComponente_pos(componentPosition+1);
+			System.out.println("RECIPE ROW ID " + recipeRow.getComponente_pos());
 			recipe.recipe_row.add(recipeRow);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/addRecipe.jsp");
-			dispatcher.forward(request, response);
-			
-		} else if (action == "showComponents") {
-			System.out.println("----------- WESZŁEM BEZ KONTEXTPATH");
-			recipeRow.setId(java.util.UUID.randomUUID().toString());
-			recipeRow.setComponent(ComponentsDao.LoadComponentById(componentId));
-			recipe.recipe_row.add(recipeRow);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/addRecipe.jsp");
-			dispatcher.forward(request, response);
-		}*/
+			componentPosition++;
+		}
+		
+		RecipeDao.InsertRecipe(recipe);
 
-		//User user = new User();
-
-		doGet(request, response);
+		
+		session = request.getSession(false);
+		if (session != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
+			dispatcher.forward(request, response);
+		} else { 
+			GenerateComponentsList(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
+			dispatcher.forward(request, response);
+		}
+		//GenerateComponentsList(request, response);
 	}
 
 	private void GenerateComponentsList(HttpServletRequest request, HttpServletResponse response)

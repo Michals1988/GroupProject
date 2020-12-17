@@ -4,7 +4,7 @@ public class RecipeRow {
 	
 	private String id;
 	private String id_recipe;
-	private Components component;
+	private Components component = new Components();
 	private int componente_pos;
 	private float componente_qta;
 	
@@ -23,6 +23,10 @@ public class RecipeRow {
 	}
 	public String getComponentId() {
 		return component.getId();
+	}
+	
+	public void setComponentId(String id) {
+		this.component.setId(id);
 	}
 	public void setComponent(Components component) {
 		this.component = component;

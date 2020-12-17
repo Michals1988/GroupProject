@@ -6,15 +6,19 @@ public class RecipeHeader {
 	private String name;
 	private String description;
 	private int active;
-	private User user;
+	private User user = new User();
 	private String data_creation;
 	private String video_link;
 	private String note;
 	private String photo_path;
-	private Categories category;	
+	private Categories category = new Categories();	
 	
 	public String getGeneratedId() {
 		return java.util.UUID.randomUUID().toString();
+	}
+	
+	public void generateId() {
+		this.id = java.util.UUID.randomUUID().toString();
 	}
 
 	public String getId() {
@@ -51,6 +55,10 @@ public class RecipeHeader {
 
 	public String getUserId() {
 		return user.getId();
+	}
+	
+	public void setUserId(String id) {
+		this.user.setId(id);
 	}
 	
 	public String getUserName() {
@@ -95,6 +103,10 @@ public class RecipeHeader {
 
 	public String getCategoryId() {
 		return category.getId();
+	}
+	
+	public void setCategoryId(String id) {
+		this.category.setId(id);
 	}
 	
 	public String getCategoryCode() {
