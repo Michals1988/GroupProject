@@ -51,7 +51,7 @@
 					<li class="nav-item active"><a class="nav-link" href="..."
 						name="mainPage_linkMainPage">Główna strona<span
 							class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="..."
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/addRecipe"
 						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
 					<li class="nav-item"><a class="nav-link" href="..."
 						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
