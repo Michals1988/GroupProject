@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
   <head>
 
@@ -104,7 +104,7 @@ if(userName == null) response.sendRedirect("login");
 							  <label class="input-group-text col-3" for="inputGroupSelect01">Kategoria</label>
 									<select class="form-select col-9" name="category">
 										<option selected>Wybierz kategorie potrawy</option>
-										  <option value="1">7721eb93-afd5-4619-b561-36d2e2b1f16b</option>
+										  <option value="7721eb93-afd5-4619-b561-36d2e2b1f16b">7721eb93-afd5-4619-b561-36d2e2b1f16b</option>
 										  <option value="2">Kuchnia polska</option>
 										  <option value="3">Kuchnia orientalna</option>
 									</select>

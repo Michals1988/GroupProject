@@ -20,6 +20,16 @@
     <title>GASTROFAZA</title>
   </head>
   <body>
+  <%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
   <header>
 	  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
 	  <a class="navbar-brand" href="#">GASTROFAZA</a>
@@ -80,17 +90,19 @@
 				<div class="offset-3 col-6 tytul">  
 					<h1>DODAJ JEDNOSTKE</h1>
 				</div>
+				<form action="<%= request.getContextPath() %>/UnitAdd" method="POST">
 					<div class="form-group offset-2 col-8">
 						<div class="input-group mb-0">
 							  <label class="input-group-text" for="inputGroupSelect01">OPIS JEDNOSTKI</label>
-									<input type="text"  name="UnitAdd_description" class="form-control" id="recipe">
+									<input type="text"  name="unit_descr" class="form-control" id="recipe">
 						</div>
 						<div class="input-group mb-0">
 							  <label class="input-group-text" for="inputGroupSelect02">SKROT JEDNOSTKI</label>
-									<input type="text"  name="UnitAdd_shortDescription" class="form-control" id="recipe">
+									<input type="text"  name="unit_code" class="form-control" id="recipe">
 						</div>
 						  <button type="submit" value="Submit" class="btn btn-primary">Dodaj jednostke</button>
 					</div>
+					</form>
 			</div>
 			
 		</div>
