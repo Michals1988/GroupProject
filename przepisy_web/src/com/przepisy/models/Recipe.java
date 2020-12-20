@@ -6,6 +6,7 @@ public class Recipe {
 	
 	public RecipeHeader recipe_header = new RecipeHeader();
 	public ArrayList<RecipeRow> recipe_row = new ArrayList<>();
+	public ArrayList<Comments> comments = new ArrayList<>();
 	
 	public RecipeHeader getRecipe_header() {
 		return recipe_header;

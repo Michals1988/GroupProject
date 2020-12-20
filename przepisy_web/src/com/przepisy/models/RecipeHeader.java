@@ -11,6 +11,16 @@ public class RecipeHeader {
 	private String video_link;
 	private String note;
 	private String photo_path;
+	private float rate;
+	
+	public float getRate() {
+		return rate;
+	}
+
+	public void setRate(float rate) {
+		this.rate = rate;
+	}
+
 	private Categories category = new Categories();	
 	
 	public String getGeneratedId() {
@@ -61,6 +71,10 @@ public class RecipeHeader {
 		this.user.setId(id);
 	}
 	
+	public void setUserLogin(String login) {
+		this.user.setLogin(login);
+	}
+	
 	public String getUserName() {
 		return user.getName();
 	}
@@ -107,6 +121,10 @@ public class RecipeHeader {
 	
 	public void setCategoryId(String id) {
 		this.category.setId(id);
+	}
+	
+	public void setCategoryCode(String code) {
+		this.category.setCode(code);
 	}
 	
 	public String getCategoryCode() {

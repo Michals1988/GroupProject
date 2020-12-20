@@ -28,6 +28,15 @@ public class RecipeRow {
 	public void setComponentId(String id) {
 		this.component.setId(id);
 	}
+	
+	public void setComponentCode(String code) {
+		this.component.setCode(code);
+	}
+	
+	public void setComponentUnitDescription(String unit_descr) {
+		this.component.setUnit_descr(unit_descr);
+	}
+	
 	public void setComponent(Components component) {
 		this.component = component;
 	}
