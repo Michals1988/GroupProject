@@ -26,7 +26,7 @@ public class MainPageServlet extends HttpServlet {
 		
 		ArrayList<TopRecipe> topRecipe = RecipeDao.GetTop5Recipes();
 		
-		for (int recipePosition=0; recipePosition<1/*recipePosition<topRecipe.size()*/; recipePosition++) {
+		for (int recipePosition=0; recipePosition<topRecipe.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
 			request.setAttribute("top"+ htmlPosition +"RecipeRating", topRecipe.get(recipePosition).getRate());
 			request.setAttribute("top"+ htmlPosition +"RecipeName", topRecipe.get(recipePosition).getRecipeName());
