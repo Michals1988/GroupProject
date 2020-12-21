@@ -86,9 +86,9 @@ public static ArrayList<String> GetTop5RecipesId() {
 	int recipes_qta = 5;
 	String result ="";
 	
-	String QUERY_RECIPE_TOP_LOAD= "select sum(rate) as rate, id_recipe as recipeid from rates"
+	String QUERY_RECIPE_TOP_LOAD= "select avg(rate) as rate, id_recipe as recipeid from rates"
 								+ " group by id_recipe"
-								+ " order by DESC"
+								+ " order by avg(rate) DESC"
 								+ " limit ? " ;
 	
 	
@@ -201,7 +201,8 @@ public static Recipe GetFullRecipe (String RecipeId) {
         
         while (resultSet.next()) {
         	  recipe.recipe_header.setId(resultSet.getString("RecipeId"));  
-        	  recipe.recipe_header.setName(resultSet.getString("RecipeId"));
+        	  recipe.recipe_header.setName(resultSet.getString("RecipeName"));
+        	  recipe.recipe_header.setDescription(resultSet.getString("RecipeDescr"));
         	  recipe.recipe_header.setNote(resultSet.getString("Note"));
         	  recipe.recipe_header.setUserId(resultSet.getString("UserId"));
         	  recipe.recipe_header.setUserLogin(resultSet.getString("Username"));

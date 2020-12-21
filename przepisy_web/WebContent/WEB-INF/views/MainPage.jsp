@@ -107,18 +107,19 @@
 
 
 
-			<div class="row">
+			<div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)" class="row" name="row1" href="${pageContext.request.contextPath}/RecipePage">
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.8/5.0</h2>
+				<div class="col-2 login" >
+					<h2 name="top1RecipeRating"><%=request.getAttribute("top1RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Risotto</h2>
-						<h3>Dania włoskie</h3>
+						<h2 name="top1RecipeName"><%=request.getAttribute("top1RecipeName")%></h2>
+						<h3 name="top1RecipeCategory"><%=request.getAttribute("top1RecipeCategory")%></h3>
+						<input type="hidden" name="hiddenId" value=<%=request.getAttribute("top1RecipeId")%>/>
 					</div>
 				</div>
 			</div>
@@ -128,60 +129,60 @@
 					<img src="img/padthai.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.5/5.0</h2>
+				<div class="col-2 login" >
+					<h2 name="top2RecipeRating"><%=request.getAttribute("top2RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Pad Thai</h2>
-						<h3>Dania tajskie</h3>
+						<h2 name="top2RecipeName"><%=request.getAttribute("top2RecipeName")%></h2>
+						<h3 name="top2RecipeCategory"><%=request.getAttribute("top2RecipeCategory")%></h3>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
+				<div class="offset-1 col-2 login" >
 					<img src="img/krupnik.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
 				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.3/5.0</h2>
+					<h2 name="top3RecipeRating"><%=request.getAttribute("top3RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Krupnik</h2>
-						<h3>Dania polskie</h3>
+						<h2 name="top3RecipeName"><%=request.getAttribute("top3RecipeName")%></h2>
+						<h3 name="top3RecipeCategory"><%=request.getAttribute("top3RecipeCategory")%></h3>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
+				<div class="offset-1 col-2 login" >
 					<img src="img/schabowy.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
 				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.1/5.0</h2>
+					<h2 name="top4RecipeRating"><%=request.getAttribute("top4RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Schabowy z ziemniakami</h2>
-						<h3>Dania polskie</h3>
+						<h2 name="top4RecipeName"><%=request.getAttribute("top4RecipeName")%></h2>
+						<h3 name="top4RecipeCategory"><%=request.getAttribute("top4RecipeCategory")%></h3>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
+				<div class="offset-1 col-2 login">
 					<img src="img/pizzaananas.jpg" alt="..." img
 						style="vertical-align: middle">
 				</div>
 				<div class="col-2 login" name="mainPage_Rating">
-					<h2>1.5/5.0</h2>
+					<h2  name="top5RecipeRating"><%=request.getAttribute("top5RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Pizza z ananasem</h2>
-						<h3>Dania włoskie</h3>
+						<h2 name="top4RecipeName"><%=request.getAttribute("top5RecipeName")%></h2>
+						<h3 name="top4RecipeCategory"><%=request.getAttribute("top5RecipeCategory")%></h3>
 					</div>
 				</div>
 			</div>
