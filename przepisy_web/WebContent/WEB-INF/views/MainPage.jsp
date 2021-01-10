@@ -100,7 +100,7 @@
 	<main>
 		<div class="conteiner">
 
-			<div class="offset-2 col-8">
+			<div class="offset-2 col-8 login">
 				<br /> <br />
 				<h1>TOP 5 przepisow w tym tygodniu</h1>
 			</div>
