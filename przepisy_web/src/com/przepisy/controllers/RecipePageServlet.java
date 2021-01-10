@@ -36,7 +36,7 @@ public class RecipePageServlet extends HttpServlet {
 		
 		request.setAttribute("components", recipe.recipe_row);
 		
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recipePage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recipeSite.jsp");
         dispatcher.forward(request, response);
 		
 	}
