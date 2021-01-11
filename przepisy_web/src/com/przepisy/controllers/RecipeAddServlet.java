@@ -58,14 +58,6 @@ public class RecipeAddServlet extends HttpServlet {
 		String[] componentsIds = gson.fromJson(componentsJSON, String[].class);
 		String[] componentsQta = gson.fromJson(qtaJSON, String[].class);
 		
-		// SPRAWDZENIE CZY WYSWIETLA DANE Z JSONA
-		for (String comp : componentsIds) {
-			System.out.println("JEBANY JSON WYSWIETLA MI SKLADNIK" + comp);
-		}
-		for (String qta : componentsQta) {
-			System.out.println("JEBANY JSON WYSWIETLA MI ilosc" + qta);
-		}
-		
 		Recipe recipe = new Recipe();
 		
 		System.out.println("RECIPE ID ------  " + recipeId);

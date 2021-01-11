@@ -57,7 +57,6 @@ public class UserPanelServlet extends HttpServlet {
     				}
     				cookie.setMaxAge(0);
     				response.addCookie(cookie);
-    				System.out.println("COOKIES DESTROYED BITCH");
     			}
     		}
         	response.sendRedirect("login");
