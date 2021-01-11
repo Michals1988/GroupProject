@@ -87,7 +87,7 @@
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link" href="...." name="mainPage_UserName">Nazwa
+					<a class="nav-link" href="<%= request.getContextPath() %>/RecipePage"" name="mainPage_UserName">Nazwa
 						użytkownika<span class="sr-only"></span>
 					</a>
 				</form>

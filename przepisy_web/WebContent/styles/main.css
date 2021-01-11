@@ -3,13 +3,13 @@
 body
 {
 
-		background-image: url("img/jedzenieLogin.jpeg");
+		background-image: url("IMG/jedzenieLogin.jpeg");
 		background-position:  top center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
-
-
+		width: 95%;
+		margin: auto;
 }
 
 

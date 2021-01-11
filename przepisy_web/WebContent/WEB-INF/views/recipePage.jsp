@@ -75,34 +75,34 @@
 	  <main>
 	  <div class="conteiner">
 		<div class="row">
-			<div class="col-4 login">
+			<div class="col-3 login skladniki">
 					<div name="recipeSite_zdjecie">
 					<img src="img/risotto.jpg" alt="Zdjecie potrawy" class="rounded-pill">
 					</div>
-					<div name="recipeRate">
-					<h2><figcaption><!-- 4.8/5.0 --></figcaption></h2>
+					<div name="recipeRate skladniki">
+					<h2><figcaption> 4.8/5.0 </figcaption></h2>
 					</div>
 
 			</div>	
 			
-			<div class="col-8 login">
+			<div class="col-8 login skladniki">
 				<div name="recipeName">
-					<h1> <!-- RISOTTO --></h1>
+					<h1> RISOTTO </h1>
 				</div>
 				<div name="recipeDescr">
-					<a><!-- Zapraszam po sprawdzony przepis na domowe risotto. 
+					<a> Zapraszam po sprawdzony przepis na domowe risotto. 
 					Jeśli szukasz klasycznego i tradycyjnego sposobu na risotto, 
 					które możesz podać jako samodzielne danie oraz połączyć z mięsem i warzywami..  
-					Do dzieła! --></a>
+					Do dzieła! </a>
 				</div>
 			</div>
 		</div>
 			
 		<div class="row">
 		
-			<div class="col-4">
-				<div class="skladniki" name="components">
-					<!-- 5 kawałków suszonych pomidorów w zalewie <br/>
+			<div class="col-3 skladniki">
+				<div class="" name="components">
+					5 kawałków suszonych pomidorów w zalewie <br/>
 					1 mała cebula<br/>
 					1 ząbek czosnku<br/>
 					200 g ryżu do risotto<br/>
@@ -114,12 +114,12 @@
 					50 g pomidorków koktajlowych<br/>
 					5 łyżek tartego Parmezanu<br/>
 					50 g gorgonzoli<br/>
-					1/2 szklanki listków świeżej bazylii<br/> -->
+					1/2 szklanki listków świeżej bazylii<br/> 
 				</div>
 			</div>
 		
-			<div class="col-8">
-				<div class="login">
+			<div class="col-8 login skladniki">
+				<div class="">
 				<h2>Sposob przygotowania</h2>
 				<h5>
 			Pomidory suszone pokroić na mniejsze kawałeczki, odłożyć.
@@ -141,18 +141,16 @@
 		</div>
 		
 			<div class="row">			
-				<div class="offset-4 col-8" name="videoLink">		
+				<div class="col-11" name="videoLink">		
 					<div class="login" >
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/EmJC3gUAhw0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				</div>
-				<div class="offset-4 col-8">
+				<div class="col-11 skladniki">
 					<div class="login" name="recipeSite_komentarzeDoWyswietlenia">
 						Komentarze
 					</div>
-				</div>
 				
-				<div class="offset-4 col-8">
 					<div class="form-group" name="recipeSite_komentarzeDoDodania">
 						<label for="exampleFormControlTextarea1">Dodaj komentarz:</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -160,12 +158,6 @@
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			
-			
-		</div>
 		</main>
   
 
