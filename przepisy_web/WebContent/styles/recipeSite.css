@@ -32,6 +32,12 @@ div.login img{
 	height: auto;
 }
 
+btn{
+	display:block;
+	margin: 0 auto;
+	
+}
+
 div.skladniki{
 	width: 90%;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -44,6 +50,9 @@ div.skladniki{
 h1{
 	color: #000000;
 }
+
+
+
 
 div.form-group{
 	padding-top: 10px;

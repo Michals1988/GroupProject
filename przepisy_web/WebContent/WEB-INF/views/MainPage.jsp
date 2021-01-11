@@ -41,7 +41,7 @@
 	%>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-			<a class="navbar-brand" href="#">GASTROFAZA</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/MainPage">GASTROFAZA</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent">
 				<span class="navbar-toggler-icon"></span>
@@ -49,12 +49,12 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="..."
+					<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage"
 						name="mainPage_linkMainPage">Główna strona<span
 							class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/addRecipe"
 						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
-					<li class="nav-item"><a class="nav-link" href="..."
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/Favourites"
 						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item dropdown"><a

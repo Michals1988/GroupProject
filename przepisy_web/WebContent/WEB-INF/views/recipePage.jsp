@@ -81,6 +81,9 @@
 					</div>
 					<div name="recipeRate skladniki">
 					<h2><figcaption> 4.8/5.0 </figcaption></h2>
+						<div class="offset-3 col-6">
+							<button type="submit" value="Submit" class="btn btn-primary ">Dodaj do ulubionych</button>
+						</div>
 					</div>
 
 			</div>	
@@ -141,9 +144,9 @@
 		</div>
 		
 			<div class="row">			
-				<div class="col-11" name="videoLink">		
+				<div class="col-12" >		
 					<div class="login" >
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/EmJC3gUAhw0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/EmJC3gUAhw0" name="videoLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				</div>
 				<div class="col-11 skladniki">
