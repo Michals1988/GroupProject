@@ -14,32 +14,33 @@ import javax.servlet.http.HttpSession;
 import com.przepisy.dao.RecipeDao;
 import com.przepisy.models.TopRecipe;
 
-
-@WebServlet("/MainPage")
-public class MainPageServlet extends HttpServlet {
+@WebServlet("/FavouritesServlet")
+public class FavouritesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	public MainPageServlet() {
+       
+
+    public FavouritesServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		String userName = (String) session.getAttribute("login");
-		ArrayList<TopRecipe> topRecipe = RecipeDao.GetTop5Recipes();
-		request.setAttribute("login", userName);
-		for (int recipePosition=0; recipePosition<topRecipe.size(); recipePosition++) {
+		String userId = (String) session.getAttribute("id");
+		
+		ArrayList<TopRecipe> favouritesRecipes = RecipeDao.GetFavouritesRecipes(userId);
+		for (int recipePosition=0; recipePosition<favouritesRecipes.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
-			request.setAttribute("top"+ htmlPosition +"RecipeRating", topRecipe.get(recipePosition).getRate());
-			request.setAttribute("top"+ htmlPosition +"RecipeName", topRecipe.get(recipePosition).getRecipeName());
-			request.setAttribute("top"+ htmlPosition +"RecipeCategory", topRecipe.get(recipePosition).getCategoryName());
+			request.setAttribute("fav"+ htmlPosition +"RecipeRating", favouritesRecipes.get(recipePosition).getRate());
+			request.setAttribute("fav"+ htmlPosition +"RecipeName", favouritesRecipes.get(recipePosition).getRecipeName());
+			request.setAttribute("fav"+ htmlPosition +"RecipeCategory", favouritesRecipes.get(recipePosition).getCategoryName());
 		}
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/Favourites.jsp");
         dispatcher.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
 		doGet(request, response);
 	}
+
 }

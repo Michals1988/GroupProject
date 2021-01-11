@@ -115,24 +115,26 @@ public static ArrayList<String> GetTop5RecipesId() {
 }
 
 public static ArrayList<String> GetRecipesIdsByName(String name) {
-	
+	System.out.println("GetRecipesIdsByName przejął nazwę " + name);
 	ArrayList<String> RecipesIds = new ArrayList<>();
 	String result ="";
+	String queryParameter = "";
 	
-	String QUERY_RECIPE_TOP_LOAD= "select id from recipe_header where name like '*?*'";
+	String QUERY_RECIPE_TOP_LOAD= "select id from recipes_header where name like ?";
 	
 	Connection con = ConnectionMysql.getCon();
 	
 	try {       		
         PreparedStatement preparedStatement = con.prepareStatement(QUERY_RECIPE_TOP_LOAD);
-        preparedStatement.setString(1, name);
+        queryParameter = "%" + name + "%";
+        preparedStatement.setString(1, queryParameter);
         
         System.out.println(preparedStatement);
                
         ResultSet resultSet = preparedStatement.executeQuery();
         
         while (resultSet.next()) {
-        	  result = resultSet.getString("recipeid");  
+        	  result = resultSet.getString("id");  
         	  RecipesIds.add(result);
         	}
 
@@ -291,7 +293,6 @@ public static Recipe GetFullRecipe (String RecipeId) {
 
 public static ArrayList<TopRecipe> GetRecipeListByName (String RecipeName) {
 	
-	
 	ArrayList<TopRecipe> listFoundRecipe = new ArrayList<>(); 
 	ArrayList<String> RecipesIds = GetRecipesIdsByName(RecipeName);
 	
@@ -314,7 +315,7 @@ public static ArrayList<TopRecipe> GetRecipeListByName (String RecipeName) {
 					   									+" on a.id_category = b.id"
 					   									+" left join users as c"
 					   									+" on a.id_user = c.id"
-					   									+" where a.name like ?";
+					   									+" where a.id = ?";
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(LOAD_RECIPE_WITH_DETAILS);
 	        preparedStatement.setString(1, RecipesIds.get(i));
@@ -348,7 +349,7 @@ public static ArrayList<TopRecipe> GetFavouritesRecipes (String userId) {
 	
 	ArrayList<TopRecipe> listFavouritesRecipes = new ArrayList<>(); 
 	ArrayList<String> RecipesIds = FavouritesDao.GetFavouritesIds(userId);
-	
+	System.out.println(RecipesIds.get(0));
 	Connection con = ConnectionMysql.getCon();
 	
 	for(int i=0;i<RecipesIds.size();i++)
@@ -368,7 +369,7 @@ public static ArrayList<TopRecipe> GetFavouritesRecipes (String userId) {
 					   									+" on a.id_category = b.id"
 					   									+" left join users as c"
 					   									+" on a.id_user = c.id"
-					   									+" where a.name like ?";
+					   									+" where a.id = ?";
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(LOAD_RECIPE_WITH_DETAILS);
 	        preparedStatement.setString(1, RecipesIds.get(i));

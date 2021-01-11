@@ -14,32 +14,37 @@ import javax.servlet.http.HttpSession;
 import com.przepisy.dao.RecipeDao;
 import com.przepisy.models.TopRecipe;
 
-
-@WebServlet("/MainPage")
-public class MainPageServlet extends HttpServlet {
+@WebServlet("/SearchServlet")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public MainPageServlet() {
+	ArrayList<TopRecipe> listFoundRecipe;
+
+    public SearchServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		String userName = (String) session.getAttribute("login");
-		ArrayList<TopRecipe> topRecipe = RecipeDao.GetTop5Recipes();
 		request.setAttribute("login", userName);
-		for (int recipePosition=0; recipePosition<topRecipe.size(); recipePosition++) {
+		
+		for (int recipePosition=0; recipePosition<listFoundRecipe.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
-			request.setAttribute("top"+ htmlPosition +"RecipeRating", topRecipe.get(recipePosition).getRate());
-			request.setAttribute("top"+ htmlPosition +"RecipeName", topRecipe.get(recipePosition).getRecipeName());
-			request.setAttribute("top"+ htmlPosition +"RecipeCategory", topRecipe.get(recipePosition).getCategoryName());
+			request.setAttribute("found"+ htmlPosition +"RecipeRating", listFoundRecipe.get(recipePosition).getRate());
+			request.setAttribute("found"+ htmlPosition +"RecipeName", listFoundRecipe.get(recipePosition).getRecipeName());
+			request.setAttribute("found"+ htmlPosition +"RecipeCategory", listFoundRecipe.get(recipePosition).getCategoryName());
 		}
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/searchPage.jsp");
         dispatcher.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchInput = request.getParameter("mainPage_Search");
+		
+		listFoundRecipe = RecipeDao.GetRecipeListByName(searchInput);
+		
 		doGet(request, response);
 	}
+
 }

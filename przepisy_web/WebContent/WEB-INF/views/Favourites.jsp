@@ -112,12 +112,12 @@
 						style="vertical-align: middle">
 				</div>
 				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.8/5.0</h2>
+					<h2 name="fav1RecipeRating"><%=request.getAttribute("fav1RecipeRating")%></h2>
 				</div>
 				<div class="col-6 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Risotto</h2>
-						<h3>Dania włoskie</h3>
+						<h2 name="fav1RecipeName" ><%=request.getAttribute("fav1RecipeName")%></h2>
+						<h3 name="fav1RecipeCategory"><%=request.getAttribute("fav1RecipeCategory")%></h3>
 					</div>
 				</div>
 			</div>

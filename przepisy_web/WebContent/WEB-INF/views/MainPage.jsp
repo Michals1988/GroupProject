@@ -54,7 +54,7 @@
 							class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/addRecipe"
 						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
-					<li class="nav-item"><a class="nav-link" href="..."
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/FavouritesServlet"
 						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item dropdown"><a
@@ -77,7 +77,7 @@
 						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
 						role="button" data-toggle="dropdown"> Szukaj </a>
 						<div class="dropdown-menu">
-							<form class="form-inline">
+							<form class="form-inline" action="<%= request.getContextPath() %>/SearchServlet" method="post">
 								<input class="form-control mr-sm-2" type="search"
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
@@ -87,8 +87,7 @@
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link" href="...." name="mainPage_UserName">Nazwa
-						użytkownika<span class="sr-only"></span>
+					<a class="nav-link" href="<%= request.getContextPath() %>/UserPanel" name="mainPage_UserName"><%=request.getAttribute("login")%><span class="sr-only"></span>
 					</a>
 				</form>
 				<form class="form-inline my-2 my-lg-0" action="<%= request.getContextPath() %>/Logout" method="post">

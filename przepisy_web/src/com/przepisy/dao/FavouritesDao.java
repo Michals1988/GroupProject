@@ -43,7 +43,7 @@ public static ArrayList<String> GetFavouritesIds(String userId) {
 	
 		try {
 		
-		String QUERY_LOAD_FAV_IDS= "select id from favourite where user_id = ?";
+		String QUERY_LOAD_FAV_IDS= "select recipe_header_id as id from favourite where user_id = ?";
 		
 		PreparedStatement preparedStatement = con.prepareStatement(QUERY_LOAD_FAV_IDS);
         preparedStatement.setString(1, userId);
@@ -51,7 +51,7 @@ public static ArrayList<String> GetFavouritesIds(String userId) {
         ResultSet resultSet = preparedStatement.executeQuery();
         
         while (resultSet.next()) {
-        	FavouriteIds.add(resultSet.getString("RecipeId"));     	  
+        	FavouriteIds.add(resultSet.getString("id"));     	  
         }
         	   		
 	}catch (SQLException e) {
