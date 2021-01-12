@@ -17,68 +17,90 @@
     <title>GASTROFAZA</title>
   </head>
   <body>
-  
+  <%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
   <header>
-	  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-	  <a class="navbar-brand" href="#">GASTROFAZA</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+			<a class="navbar-brand" href="#">GASTROFAZA</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					  <li class="nav-item active">
-							<a class="nav-link" href="${pageContext.request.contextPath}/MainPage" name="mainPage_linkDoGlownej">Główna strona<span class="sr-only"></span></a>
-					  </li>			  
-					  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="..." id="navbarDropdownAdd" role="button" data-toggle="dropdown">
-							  Dodaj
-							</a>
-							<div class="dropdown-menu">
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/addRecipe" name="mainPage_linkDodajPrzepis" >Przepis</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/ComponentAdd" name="mainPage_link_ComponentsAdd" >Składnik</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/CategoriesAdd" name="mainPage_link_CategoriesAdd" >Kategorie</a>
+
+					<li class="nav-item active"><a class="nav-link"
+						href="${pageContext.request.contextPath}/MainPage"
+						name="mainPage_linkMainPage">Główna strona<span
+							class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/addRecipe"
+						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/FavouritesServlet"
+						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
+						role="button" data-toggle="dropdown"> Kategorie </a>
+						<div class="dropdown-menu">
+							<c:forEach items="${listCategories}" var="Categories">
+								<a class="dropdown-item" value="${Categories.id}" href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out value="${Categories.code}"/></a>
+							</c:forEach>
+
+						</div></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
+						role="button" data-toggle="dropdown"> Szukaj </a>
+						<div class="dropdown-menu">
+							<form class="form-inline"
+								action="<%=request.getContextPath()%>/SearchServlet"
+								method="post">
+								<input class="form-control mr-sm-2" type="search"
+									placeholder="Search" name="mainPage_Search">
+								<button class="btn btn-outline-success my-2 my-sm-0"
+									type="submit">Szukaj</button>
+							</form>
+						</div></li>
 						
-							</div>
-					  </li>
-					  <li class="nav-item">
-							<a class="nav-link" href="${pageContext.request.contextPath}/FavouritesServlet" name="mainPage_linkDoUlubione">Ulubione<span class="sr-only"></span></a>
-					  </li>
-					  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/UserPanel" id="navbarDropdown" role="button" data-toggle="dropdown">
-							  Kategorie
-							</a>
-							<div class="dropdown-menu">
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/RecipeFromCategory" name="mainPage_linkKategoriaWloska">Kuchnia włoska</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/RecipeFromCategory" name="mainPage_linkKategoriaPolska">Kuchnia polska</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/RecipeFromCategory" name="mainPage_linkKategoriaSrodziemnomorska">Kuchnia śródziemnomorska</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/RecipeFromCategory" name="mainPage_linkKategoriatajska">Kuchnia tajska</a>
-							  <a class="dropdown-item" href="${pageContext.request.contextPath}/RecipeFromCategory" name="mainPage_linkKategoriaOrientalna">Kuchnia orientalna</a>
-							</div>
-					  </li>
-					  
-					  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="..." id="navbarDropdown" role="button" data-toggle="dropdown">
-							  Szukaj
-							</a>
-							<div class="dropdown-menu">
-							  <form class="form-inline">
-									<input class="form-control mr-sm-2" type="search" placeholder="Search"  name="mainPage_Szukaj">
-									<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-								</form>							 
-							</div>
-					  </li>
-				</ul>					  
-				
-			<form class="form-inline my-2 my-lg-0">
-				<a class="nav-link" href="${pageContext.request.contextPath}/UserPanel"  name="mainPage_NazwaUzytkownik">Nazwa użytkownika<span class="sr-only"></span></a>
-			</form>
-			<form class="form-inline my-2 my-lg-0">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
-			</form>
-		  </div>
-	</nav>
-  </header>
+						<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/UnitAdd"
+						name="mainPage_linkToFavorite">Dodaj jednostkę<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/ComponentAdd"
+						name="mainPage_linkToFavorite">Dodaj składnik<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/CategoriesAdd"
+						name="mainPage_linkToFavorite">Dodaj kategorię<span class="sr-only"></span></a>
+					</li>
+				</ul>
+
+				<form class="form-inline my-2 my-lg-0">
+					<a class="nav-link"
+						href="<%=request.getContextPath()%>/UserPanel"
+						name="mainPage_UserName"><%=request.getAttribute("login")%><span
+						class="sr-only"></span> </a>
+				</form>
+				<form class="form-inline my-2 my-lg-0"
+					action="<%=request.getContextPath()%>/Logout" method="post">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
+				</form>
+			</div>
+		</nav>
+	</header>
+
   
 	  <main>
 	  <div class="conteiner">
@@ -154,20 +176,39 @@
 			<div class="row">			
 				<div class="col-12" >		
 					<div class="login" >
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/EmJC3gUAhw0" name="videoLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+						<iframe width="560" height="315" src="<%=request.getAttribute("videoLink")%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 					</div>
 				</div>
 				<div class="col-11 skladniki">
-					<div class="login" name="recipeSite_komentarzeDoWyswietlenia">
+					<div class="login" name="recipeSite_commentsToView">
 						Komentarze
 					</div>
-				
+						
+								
 					<div class="form-group" name="recipeSite_komentarzeDoDodania">
 						<label for="exampleFormControlTextarea1">Dodaj komentarz:</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</br>
+						<div class="offset-3 col-6">
+					<div class="input-group ">
+						<label class="input-group-text col-3" for="inputGroupSelect01">Oceń przepis:</label>
+						<select class="form-select col-9" name="category">
+							    <option selected>Wybierz ocenę</option>
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+							    <option value="5">5</option>
+						</select>
+					</div>
+					
 						<button type="submit" value="Submit" class="btn btn-primary">Dodaj</button>
+						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</main>
   
@@ -177,4 +218,4 @@
 
 
   </body>
-</html>>
+</html>

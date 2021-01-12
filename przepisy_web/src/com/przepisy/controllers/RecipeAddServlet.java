@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.przepisy.dao.CategoriesDao;
 import com.przepisy.dao.ComponentsDao;
 import com.przepisy.dao.RecipeDao;
+import com.przepisy.models.Categories;
 import com.przepisy.models.Components;
 import com.przepisy.models.Recipe;
 import com.przepisy.models.RecipeRow;
@@ -23,6 +25,8 @@ import com.przepisy.models.RecipeRow;
 @WebServlet("/addRecipe")
 public class RecipeAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	List<Categories> listCategories;
 
 	public RecipeAddServlet() {
 		super();
@@ -30,6 +34,7 @@ public class RecipeAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		generateCategoriesList(request, response);
 		GenerateComponentsList(request, response);
 	}
 
@@ -51,6 +56,7 @@ public class RecipeAddServlet extends HttpServlet {
 		String shortDescription = request.getParameter("shortDescription");
 		String longDescription = request.getParameter("longDescription");
 		String category = request.getParameter("category");
+		String videoLink = request.getParameter("videoLink");
 		
 		String componentsJSON = request.getParameter("hiddenComponents");
 		String qtaJSON = request.getParameter("hiddenQta");
@@ -70,6 +76,7 @@ public class RecipeAddServlet extends HttpServlet {
 		recipe.recipe_header.setCategoryId(category);
 		recipe.recipe_header.setActive(1);
 		recipe.recipe_header.setUserId(userId);
+		recipe.recipe_header.setVideo_link(videoLink);
 		recipe.recipe_header.setData_creation(formatter.format(date));
 		
 		int componentPosition = 0;
@@ -116,4 +123,15 @@ public class RecipeAddServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
+        
+	}
+	
 }

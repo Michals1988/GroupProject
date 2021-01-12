@@ -81,7 +81,7 @@ if(userName == null) response.sendRedirect("login");
 							<div class="dropdown-menu">
 							  <form class="form-inline">
 									<input class="form-control mr-sm-2" type="search" placeholder="Search"  name="mainPage_Szukaj">
-									<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+									<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
 								</form>							 
 							</div>
 					  </li>
