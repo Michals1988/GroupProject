@@ -64,9 +64,7 @@ public class ComponentAddServlet extends HttpServlet {
 	
 	private void GenerateComponentsList(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		
-			
-      
+		   
         	List<Units> listUnits = UnitsDao.listAllActiveUnits();
             request.setAttribute("listUnits", listUnits);
                                  

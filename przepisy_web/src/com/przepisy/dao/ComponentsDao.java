@@ -68,7 +68,7 @@ public class ComponentsDao {
 		
 		List<Components> listComponents = new ArrayList<>();
          
-        String SELECT_ACTIVE_COMPONENTS = "select a.id, a.id_unit, b.code as unit_descr,a.code, a.description,a.active from components as a"
+        String SELECT_ACTIVE_COMPONENTS = "select a.id, a.id_unit, b.code as unit_descr, concat(a.code, ' (', b.code, ')') as code, a.description,a.active from components as a"
         									+ " left join units as b"
         									+ " on a.id_unit = b.id";
          
@@ -86,6 +86,7 @@ public class ComponentsDao {
                 	  String id_unit = resultSet.getString("id_unit"); // id jednostki
                 	  String unit_code = resultSet.getString("unit_descr"); // kod/opis jednostki
                 	  String code = resultSet.getString("code"); // kod komponentu
+                	  System.out.println("KOMPONENT I JEDNOSTKA " + code);
                 	  String description = resultSet.getString("description");
                 	  int active = resultSet.getInt("active"); 
                 	  
