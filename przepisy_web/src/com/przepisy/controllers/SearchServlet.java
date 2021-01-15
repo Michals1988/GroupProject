@@ -2,6 +2,7 @@ package com.przepisy.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.przepisy.dao.CategoriesDao;
 import com.przepisy.dao.RecipeDao;
+import com.przepisy.models.Categories;
 import com.przepisy.models.TopRecipe;
 
 @WebServlet("/SearchServlet")
@@ -28,6 +31,7 @@ public class SearchServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String userName = (String) session.getAttribute("login");
 		request.setAttribute("login", userName);
+		generateCategoriesList(request, response);
 		
 		for (int recipePosition=0; recipePosition<listFoundRecipe.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
@@ -45,6 +49,15 @@ public class SearchServlet extends HttpServlet {
 		listFoundRecipe = RecipeDao.GetRecipeListByName(searchInput);
 		
 		doGet(request, response);
+	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categories> listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
 	}
 
 }

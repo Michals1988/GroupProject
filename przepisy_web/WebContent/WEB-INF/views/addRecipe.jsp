@@ -145,25 +145,18 @@
 					</div>
 		
 					<div class="input-group">
-							<label class="input-group-text col-12" style="justify-content: center">Składniki już dodaje do przepisu</label>
+							<label class="input-group-text col-12" style="justify-content: center">Składniki już dodane do przepisu</label>
 							  		<div class="componentList col-12">
-							  		<label class="form-select id " style="justify-content: center" name="componentList" >
-										 <c:forEach items="${listComponents}" var="Components">
-										      <option value="${Components.id}"
-										            <c:if test="${Components.id eq selectedComponentId}">selected="selected"</c:if>
-										                    >
-										                    ${Components.description}
-										                </option>
-										        	</c:forEach>
+							  		<label class="form-select id " id="addedComponentsList" style="justify-content: center" name="componentList" >
+										 
 								  	</label>
 							  		</div>
 							  </div>
 					
 					<div class="input-group mb-0">
-						<label class="input-group-text" for="inputGroupSelect01">Skladnik</label>
+						<label class="input-group-text" for="inputGroupSelect01">Składnik</label>
 
-						<select class="form-select id="
-							componentComboBox" name="component">
+						<select class="form-select" id="componentComboBox" name="component">
 							<c:forEach items="${listComponents}" var="Components">
 								<option value="${Components.id}"
 									<c:if test="${Components.id eq selectedComponentId}">selected="selected"</c:if>>

@@ -1,6 +1,7 @@
 package com.przepisy.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.przepisy.dao.CategoriesDao;
 import com.przepisy.dao.RecipeDao;
+import com.przepisy.models.Categories;
 import com.przepisy.models.Recipe;
 
 @WebServlet("/RecipePage")
@@ -25,8 +28,9 @@ public class RecipePageServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String userName = (String) session.getAttribute("login");
 		request.setAttribute("login", userName);
-		String recipeId = request.getParameter("hiddenRecipeId");
+		String recipeId = request.getParameter("recipeId");
 		Recipe recipe = RecipeDao.GetFullRecipe(recipeId);
+		generateCategoriesList(request, response);
 		
 		request.setAttribute("recipeName", recipe.recipe_header.getName());
 		request.setAttribute("recipeId", recipe.recipe_header.getId());
@@ -47,6 +51,15 @@ public class RecipePageServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categories> listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
 	}
 
 }

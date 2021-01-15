@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
+import com.przepisy.dao.CategoriesDao;
 import com.przepisy.dao.UnitsDao;
+import com.przepisy.models.Categories;
 import com.przepisy.models.Units;
 
 
@@ -24,6 +24,7 @@ public class UnitsShowListServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Units> listUnits = UnitsDao.listAllActiveUnits();
+		generateCategoriesList(request, response);
         request.setAttribute("listUnits", listUnits);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UnitList.jsp");
         dispatcher.forward(request, response);
@@ -32,5 +33,14 @@ public class UnitsShowListServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categories> listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
 	}
 }

@@ -1,6 +1,7 @@
 package com.przepisy.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.przepisy.dao.CategoriesDao;
 import com.przepisy.dao.UserDao;
 import com.przepisy.dao.UserLoginDao;
+import com.przepisy.models.Categories;
 import com.przepisy.models.User;
 import com.przepisy.utility.Image;
 
@@ -26,6 +30,9 @@ public class UserPanelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		String userName = (String) session.getAttribute("login");
+		request.setAttribute("login", userName);
+		generateCategoriesList(request, response);
         try {
 		request.setAttribute("login", session.getAttribute("login"));
         request.setAttribute("name", session.getAttribute("name"));
@@ -89,6 +96,15 @@ public class UserPanelServlet extends HttpServlet {
 			 System.out.println("STARE HASLO NIEPRAWIDLOWE");
 		 }
 		doGet(request, response);
+	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categories> listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
 	}
 
 }

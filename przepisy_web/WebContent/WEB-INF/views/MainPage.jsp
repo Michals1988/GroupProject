@@ -124,7 +124,7 @@
 
 
 			<!-- <div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)" href="${pageContext.request.contextPath}/RecipePage" > -->
-				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage';" style="cursor: pointer;" class="row" name="row1">
+				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=<%=request.getAttribute("top1RecipeId")%>';" style="cursor: pointer;" class="row" name="row1">
 
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
@@ -147,7 +147,7 @@
 			
 			
 
-			<div class="row">
+			<div onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=<%=request.getAttribute("top2RecipeId")%>';" style="cursor: pointer;" class="row" name="row1">
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/padthai.jpg" alt="..." img
 						style="vertical-align: middle">
@@ -163,7 +163,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=<%=request.getAttribute("top3RecipeId")%>';" style="cursor: pointer;" class="row" name="row1">
 				<div class="offset-1 col-2 login">
 					<img src="img/krupnik.jpg" alt="..." img
 						style="vertical-align: middle">
@@ -179,7 +179,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=<%=request.getAttribute("top4RecipeId")%>';" style="cursor: pointer;" class="row" name="row1">
 				<div class="offset-1 col-2 login">
 					<img src="img/schabowy.jpg" alt="..." img
 						style="vertical-align: middle">
@@ -194,7 +194,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=<%=request.getAttribute("top5RecipeId")%>';" style="cursor: pointer;" class="row" name="row1">
 				<div class="offset-1 col-2 login">
 					<img src="img/pizzaananas.jpg" alt="..." img
 						style="vertical-align: middle">

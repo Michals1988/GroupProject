@@ -1,5 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -107,10 +108,10 @@ if(userName == null) response.sendRedirect("login");
 		<div class="row">
 			<div class="col-3 login skladniki">
 					<div name="recipeSite_zdjecie">
-					<img src="img/risotto.jpg" alt="Zdjecie potrawy" class="rounded-pill">
+					<img src="" alt="Zdjecie potrawy" class="rounded-pill">
 					</div>
 					<div name="recipeRate skladniki">
-					<h2><figcaption> 4.8/5.0 </figcaption></h2>
+					<h2><figcaption name="recipeNote"></figcaption></h2>
 						<div class="offset-3 col-6">
 							<button type="submit" value="Submit" class="btn btn-primary ">Dodaj do ulubionych</button>
 						</div>
@@ -120,13 +121,10 @@ if(userName == null) response.sendRedirect("login");
 			
 			<div class="col-8 login skladniki">
 				<div name="recipeName">
-					<h1> RISOTTO </h1>
+					<h1><%=request.getAttribute("recipeName")%></h1>
 				</div>
-				<div name="recipeDescr">
-					<a> Zapraszam po sprawdzony przepis na domowe risotto. 
-					Jeśli szukasz klasycznego i tradycyjnego sposobu na risotto, 
-					które możesz podać jako samodzielne danie oraz połączyć z mięsem i warzywami..  
-					Do dzieła! </a>
+				<div >
+					<a name="recipeDescr"><%=request.getAttribute("recipeDescr")%></a>
 				</div>
 			</div>
 		</div>
@@ -135,39 +133,15 @@ if(userName == null) response.sendRedirect("login");
 		
 			<div class="col-3 skladniki">
 				<div class="" name="components">
-					5 kawałków suszonych pomidorów w zalewie <br/>
-					1 mała cebula<br/>
-					1 ząbek czosnku<br/>
-					200 g ryżu do risotto<br/>
-					3 łyżki masła<br/>
-					80 ml białego wina<br/>
-					ok. 1 litr bulionu jarzynowego<br/>
-					1 łyżeczka suszonego oregano<br/>
-					1 większy pomidor<br/>
-					50 g pomidorków koktajlowych<br/>
-					5 łyżek tartego Parmezanu<br/>
-					50 g gorgonzoli<br/>
-					1/2 szklanki listków świeżej bazylii<br/> 
+					<%=request.getAttribute("components")%>
 				</div>
 			</div>
 		
 			<div class="col-8 login skladniki">
 				<div class="">
-				<h2>Sposob przygotowania</h2>
-				<h5>
-			Pomidory suszone pokroić na mniejsze kawałeczki, odłożyć.
-			Do szerokiego garnka lub głębokiej patelni wlać 2 łyżki oleju z suszonych pomidorów i dodać pokrojoną w kosteczkę cebulę oraz 
-			przeciśnięty przez praskę czosnek. Zeszklić przez około 5 minut, do czasu do czasu zamieszać.
-			Dodać ryż, łyżkę masła oraz pokrojone suszone pomidory. Wymieszać i smażyć przez minutę na średnim ogniu.
-			Wlać wino i gotować przez 2 minuty, aż całe wyparuje. Następnie wlać pół szklanki gorącego bulionu i gotować risotto na małym ogniu, 
-			do czasu aż cały płyn zostanie wchłonięty przez ryż. W międzyczasie co chwilę zamieszać. Dodać też oregano.
-			Wlewać kolejne porcje bulionu, w odstępach czasowych, jak tylko poprzednia ilość się wchłonie. Gotować tak przez około 17 minut, 
-			aż ryż będzie prawie ugotowany (ciągle al dente w środku). Nie trzeba wykorzystywać całego bulionu.
-			Dodać obranego i pokrojonego w kosteczkę pomidora i co chwilę mieszając gotować przez ok. 3 - 4 minuty.
-			Dodać pokrojone pomidorki koktajlowe, następnie wymieszać i odstawić z ognia.
-			Dodać parmezan, resztę masła, pokrojoną na kawałeczki gorgonzolę i posiekaną bazylię. Doprawić solą i świeżo zmielonym pieprzem. 
-			Wymieszać, przykryć i odstawić na ok. 2 - 3 minuty.
-			Otworzyć garnek i nałożyć risotto do głębokich talerzy lub misek.
+				<h2>Sposób przygotowania</h2>
+				<h5 name="recipeNote">
+					<%=request.getAttribute("recipeNote")%>
 				</h5>
 				</div>
 			</div>

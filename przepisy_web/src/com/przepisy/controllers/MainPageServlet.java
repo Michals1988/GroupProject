@@ -31,14 +31,15 @@ public class MainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		String userName = (String) session.getAttribute("login");
-		ArrayList<TopRecipe> topRecipe = RecipeDao.GetTop5Recipes();
-		
 		request.setAttribute("login", userName);
+		
+		ArrayList<TopRecipe> topRecipe = RecipeDao.GetTop5Recipes();
 		
 		generateCategoriesList(request, response);
 		
 		for (int recipePosition=0; recipePosition<topRecipe.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
+			request.setAttribute("top"+ htmlPosition +"RecipeId", topRecipe.get(recipePosition).getRecipeId());
 			request.setAttribute("top"+ htmlPosition +"RecipeRating", topRecipe.get(recipePosition).getRate());
 			request.setAttribute("top"+ htmlPosition +"RecipeName", topRecipe.get(recipePosition).getRecipeName());
 			request.setAttribute("top"+ htmlPosition +"RecipeCategory", topRecipe.get(recipePosition).getCategoryName());
@@ -59,9 +60,6 @@ public class MainPageServlet extends HttpServlet {
         for (Categories x: listCategories) {
             System.out.println(x.getCode());
         }
-        
-        /*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
-        dispatcher.forward(request, response);*/
 	}
 }
 

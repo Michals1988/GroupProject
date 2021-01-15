@@ -1,6 +1,7 @@
 package com.przepisy.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +21,10 @@ public class CategoryAddServlet extends HttpServlet {
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		session = request.getSession(false);
+		String userName = (String) session.getAttribute("login");
+		request.setAttribute("login", userName);
+		generateCategoriesList(request, response);
 
 		System.out.println("print1: "+request.getSession().getId());
 		System.out.println("print2: "+request.getSession(false));
@@ -62,6 +66,15 @@ public class CategoryAddServlet extends HttpServlet {
 				 System.out.println("Jednostka z takim kodem juz istnieje!");
 			 }
 		
+	}
+	
+	private void generateCategoriesList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Categories> listCategories = CategoriesDao.listAllActiveCategories();
+        request.setAttribute("listCategories", listCategories);
+                             
+        for (Categories x: listCategories) {
+            System.out.println(x.getCode());
+        }
 	}
 
 }

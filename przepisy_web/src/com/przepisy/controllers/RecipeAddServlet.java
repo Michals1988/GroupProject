@@ -34,6 +34,9 @@ public class RecipeAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		String userName = (String) session.getAttribute("login");
+		request.setAttribute("login", userName);
 		generateCategoriesList(request, response);
 		GenerateComponentsList(request, response);
 	}
@@ -41,6 +44,7 @@ public class RecipeAddServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		
 		String userId = (String) session.getAttribute("id");
 		
 		Date date = new Date();
@@ -100,7 +104,8 @@ public class RecipeAddServlet extends HttpServlet {
 		session = request.getSession(false);
 		if (session != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("RecipePage?recipeId=" + recipeId);
+			//dispatcher.forward(request, response);
 		} else { 
 			GenerateComponentsList(request, response);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
