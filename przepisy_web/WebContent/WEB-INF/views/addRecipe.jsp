@@ -16,9 +16,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/scripts/script.js"></script>
-
-
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -53,7 +50,6 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-
 					<li class="nav-item active"><a class="nav-link"
 						href="${pageContext.request.contextPath}/MainPage"
 						name="mainPage_linkMainPage">Główna strona</a></li>
@@ -61,6 +57,7 @@
 						href="${pageContext.request.contextPath}/addRecipe"
 						name="mainPage_linkAddRecipe">Dodaj przepis<span
 							class="sr-only">(current)</span></a></li>
+
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/FavouritesServlet"
 						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
@@ -86,6 +83,7 @@
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
 									type="submit">Szukaj</button>
+
 							</form>
 						</div></li>
 						
@@ -133,6 +131,7 @@
 						<label class="input-group-text" for="inputGroupSelect01">Nazwa
 							przepisu</label> <input type="text" name="recipeName"
 							class="form-control" id="recipe">
+
 					</div>
 					<div class="input-group">
 						<label class="input-group-text col-3" for="inputGroupSelect01">Kategoria</label>
@@ -144,10 +143,7 @@
 							</c:forEach>
 						</select>
 					</div>
-					
-					
-					
-					
+		
 					<div class="input-group">
 							<label class="input-group-text col-12" style="justify-content: center">Składniki już dodaje do przepisu</label>
 							  		<div class="componentList col-12">
@@ -162,12 +158,6 @@
 								  	</label>
 							  		</div>
 							  </div>
-					
-					
-					
-					
-					
-					
 					
 					<div class="input-group mb-0">
 						<label class="input-group-text" for="inputGroupSelect01">Skladnik</label>
@@ -189,6 +179,7 @@
 			<div class="input-group mb-0">
 				<input form="recipeAddForm" type="file" class="form-control"
 					id="inputGroupFile02" name="RecipeAdd_uploadFile">
+
 			</div>
 			<div class="form-group  col-12 ">
 				<label>Skrocony opis przepisu</label>
@@ -196,6 +187,7 @@
 					name="shortDescription" rows="2"></textarea>
 			</div>
 			<div class="form-group  col-12 ">
+
 				<label>Tresc przepisu</label>
 				<textarea form="recipeAddForm" class="form-control"
 					name="longDescription" rows="4"></textarea>
@@ -211,9 +203,6 @@
 			</form>
 		</div>
 	</div>
-
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

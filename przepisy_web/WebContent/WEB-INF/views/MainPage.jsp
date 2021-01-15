@@ -50,7 +50,6 @@
 
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-
 					<li class="nav-item active"><a class="nav-link"
 						href="${pageContext.request.contextPath}/MainPage"
 						name="mainPage_linkMainPage">Główna strona<span
@@ -124,11 +123,9 @@
 
 
 
-			<div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)"
-				href="${pageContext.request.contextPath}/RecipePage" >
-				
+			<!-- <div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)" href="${pageContext.request.contextPath}/RecipePage" > -->
 				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage';" style="cursor: pointer;" class="row" name="row1">
-					
+
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
 						style="vertical-align: middle">

@@ -70,6 +70,7 @@ if(userName == null) response.sendRedirect("login");
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
 									type="submit">Szukaj</button>
+
 							</form>
 						</div></li>
 						
@@ -100,7 +101,6 @@ if(userName == null) response.sendRedirect("login");
 			</div>
 		</nav>
 	</header>
-
   
 	  <main>
 	  <div class="conteiner">
