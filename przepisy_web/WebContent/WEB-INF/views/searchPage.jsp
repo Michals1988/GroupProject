@@ -39,58 +39,71 @@
 		response.sendRedirect("login");
 	%>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-			<a class="navbar-brand" href="#">GASTROFAZA</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+	  <a class="navbar-brand" href="#">GASTROFAZA</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="..."
-						name="mainPage_linkMainPage">Główna strona<span
-							class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="..."
+
+					<li class="nav-item active"><a class="nav-link"
+						href="${pageContext.request.contextPath}/MainPage"
+						name="mainPage_linkMainPage">Główna strona</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/addRecipe"
 						name="mainPage_linkAddRecipe">Dodaj przepis</a></li>
-					<li class="nav-item"><a class="nav-link" href="..."
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/FavouritesServlet"
 						name="mainPage_linkToFavorite">Ulubione<span class="sr-only"></span></a>
 					</li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
 						role="button" data-toggle="dropdown"> Kategorie </a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="..."
-								name="mainPage_linkCategoryItaly">Kuchnia włoska</a> <a
-								class="dropdown-item" href="..."
-								name="mainPage_linkCategoryPolish">Kuchnia polska</a> <a
-								class="dropdown-item" href="..."
-								name="mainPage_linkCategoryMediterranean">Kuchnia
-								śródziemnomorska</a> <a class="dropdown-item" href="..."
-								name="mainPage_linkCategoryThai">Kuchnia tajska</a> <a
-								class="dropdown-item" href="..."
-								name="mainPage_linkCategoryOrient">Kuchnia orientalna</a>
+							<c:forEach items="${listCategories}" var="Categories">
+								<a class="dropdown-item" value="${Categories.id}" href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out value="${Categories.code}"/></a>
+							</c:forEach>
+
 						</div></li>
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="..." id="navbarDropdown"
 						role="button" data-toggle="dropdown"> Szukaj </a>
 						<div class="dropdown-menu">
-							<form class="form-inline">
+							<form class="form-inline"
+								action="<%=request.getContextPath()%>/SearchServlet"
+								method="post">
 								<input class="form-control mr-sm-2" type="search"
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
 									type="submit">Szukaj</button>
 							</form>
 						</div></li>
+						
+						<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/UnitAdd"
+						name="mainPage_linkToFavorite">Dodaj jednostkę<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/ComponentAdd"
+						name="mainPage_linkToFavorite">Dodaj składnik<span class="sr-only"></span></a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/CategoriesAdd"
+						name="mainPage_linkToFavorite">Dodaj kategorię<span class="sr-only"></span></a>
+					</li>
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link" href="...." name="mainPage_UserName">Nazwa
-						użytkownika<span class="sr-only"></span>
-					</a>
+					<a class="nav-link"
+						href="<%=request.getContextPath()%>/UserPanel"
+						name="mainPage_UserName"><%=request.getAttribute("login")%><span
+						class="sr-only"></span> </a>
 				</form>
-				<form class="form-inline my-2 my-lg-0" action="<%= request.getContextPath() %>/Logout" method="post">
+				<form class="form-inline my-2 my-lg-0"
+					action="<%=request.getContextPath()%>/Logout" method="post">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
 				</form>
 			</div>
@@ -99,14 +112,17 @@
 	<main>
 		<div class="conteiner">
 
-			<div class="offset-2 col-8">
+			<div class="offset-2 col-8 login">
 				<br /> <br />
-				<h1>Ulubione</h1>
+				<h1>Wyniki wyszukiwania:</h1>
 			</div>
 
 
-
-			<div class="row">
+			<div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)"
+				href="${pageContext.request.contextPath}/RecipePage" >
+				
+				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage';" style="cursor: pointer;" class="row" name="row1">
+					
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
 						style="vertical-align: middle">
@@ -121,6 +137,9 @@
 					</div>
 				</div>
 			</div>
+							</div>
+			</div>
+			
 
 			<div class="row">
 				<div class="offset-1 col-2 login" name="mainPage_IMG">

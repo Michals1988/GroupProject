@@ -17,7 +17,16 @@
     <title>GASTROFAZA</title>
   </head>
   <body>
-  
+  <%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
+if(userName == null) response.sendRedirect("login");
+%>
   <header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
 			<a class="navbar-brand" href="#">GASTROFAZA</a>
@@ -28,6 +37,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
+
 					<li class="nav-item active"><a class="nav-link"
 						href="${pageContext.request.contextPath}/MainPage"
 						name="mainPage_linkMainPage">Główna strona<span
@@ -59,7 +69,8 @@
 								<input class="form-control mr-sm-2" type="search"
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
-									type="submit">Search</button>
+									type="submit">Szukaj</button>
+
 							</form>
 						</div></li>
 						
@@ -94,34 +105,37 @@
 	  <main>
 	  <div class="conteiner">
 		<div class="row">
-			<div class="col-4 login">
+			<div class="col-3 login skladniki">
 					<div name="recipeSite_zdjecie">
 					<img src="img/risotto.jpg" alt="Zdjecie potrawy" class="rounded-pill">
 					</div>
-					<div name="recipeRate">
-					<h2><figcaption><!-- 4.8/5.0 --></figcaption></h2>
+					<div name="recipeRate skladniki">
+					<h2><figcaption> 4.8/5.0 </figcaption></h2>
+						<div class="offset-3 col-6">
+							<button type="submit" value="Submit" class="btn btn-primary ">Dodaj do ulubionych</button>
+						</div>
 					</div>
 
 			</div>	
 			
-			<div class="col-8 login">
+			<div class="col-8 login skladniki">
 				<div name="recipeName">
-					<h1> <!-- RISOTTO --></h1>
+					<h1> RISOTTO </h1>
 				</div>
 				<div name="recipeDescr">
-					<a><!-- Zapraszam po sprawdzony przepis na domowe risotto. 
+					<a> Zapraszam po sprawdzony przepis na domowe risotto. 
 					Jeśli szukasz klasycznego i tradycyjnego sposobu na risotto, 
 					które możesz podać jako samodzielne danie oraz połączyć z mięsem i warzywami..  
-					Do dzieła! --></a>
+					Do dzieła! </a>
 				</div>
 			</div>
 		</div>
 			
 		<div class="row">
 		
-			<div class="col-4">
-				<div class="skladniki" name="components">
-					<!-- 5 kawałków suszonych pomidorów w zalewie <br/>
+			<div class="col-3 skladniki">
+				<div class="" name="components">
+					5 kawałków suszonych pomidorów w zalewie <br/>
 					1 mała cebula<br/>
 					1 ząbek czosnku<br/>
 					200 g ryżu do risotto<br/>
@@ -133,12 +147,12 @@
 					50 g pomidorków koktajlowych<br/>
 					5 łyżek tartego Parmezanu<br/>
 					50 g gorgonzoli<br/>
-					1/2 szklanki listków świeżej bazylii<br/> -->
+					1/2 szklanki listków świeżej bazylii<br/> 
 				</div>
 			</div>
 		
-			<div class="col-8">
-				<div class="login">
+			<div class="col-8 login skladniki">
+				<div class="">
 				<h2>Sposob przygotowania</h2>
 				<h5>
 			Pomidory suszone pokroić na mniejsze kawałeczki, odłożyć.
@@ -160,31 +174,42 @@
 		</div>
 		
 			<div class="row">			
-				<div class="offset-4 col-8" name="videoLink">		
+				<div class="col-12" >		
 					<div class="login" >
+
 						<iframe width="560" height="315" src="<%=request.getAttribute("videoLink")%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 					</div>
 				</div>
-				<div class="offset-4 col-8">
-					<div class="login" name="recipeSite_komentarzeDoWyswietlenia">
+				<div class="col-11 skladniki">
+					<div class="login" name="recipeSite_commentsToView">
 						Komentarze
 					</div>
-				</div>
-				
-				<div class="offset-4 col-8">
+						
+								
 					<div class="form-group" name="recipeSite_komentarzeDoDodania">
 						<label for="exampleFormControlTextarea1">Dodaj komentarz:</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</br>
+						<div class="offset-3 col-6">
+					<div class="input-group ">
+						<label class="input-group-text col-3" for="inputGroupSelect01">Oceń przepis:</label>
+						<select class="form-select col-9" name="category">
+							    <option selected>Wybierz ocenę</option>
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+							    <option value="5">5</option>
+						</select>
+					</div>
+					
 						<button type="submit" value="Submit" class="btn btn-primary">Dodaj</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			
-			
-		</div>
+			</div>
 		</main>
   
 
@@ -193,4 +218,4 @@
 
 
   </body>
-</html>>
+</html>

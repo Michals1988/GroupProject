@@ -42,14 +42,13 @@
 		response.sendRedirect("login");
 	%>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-			<a class="navbar-brand" href="#">GASTROFAZA</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+ <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+	  <a class="navbar-brand" href="#">GASTROFAZA</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link"
 						href="${pageContext.request.contextPath}/MainPage"
@@ -82,7 +81,7 @@
 								<input class="form-control mr-sm-2" type="search"
 									placeholder="Search" name="mainPage_Search">
 								<button class="btn btn-outline-success my-2 my-sm-0"
-									type="submit">Search</button>
+									type="submit">Szukaj</button>
 							</form>
 						</div></li>
 						
@@ -112,20 +111,21 @@
 				</form>
 			</div>
 		</nav>
+
 	</header>
 	<main>
 		<div class="conteiner">
 
-			<div class="offset-2 col-8">
+			<div class="offset-2 col-8 login">
 				<br /> <br />
 				<h1>TOP 5 przepisow w tym tygodniu</h1>
 			</div>
 
 
 
-			<div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)"
-				class="row" name="row1"
-				href="${pageContext.request.contextPath}/RecipePage">
+			<!-- <div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)" href="${pageContext.request.contextPath}/RecipePage" > -->
+				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage';" style="cursor: pointer;" class="row" name="row1">
+
 				<div class="offset-1 col-2 login" name="mainPage_IMG">
 					<img src="img/risotto.jpg" alt="..." img
 						style="vertical-align: middle">
@@ -141,7 +141,11 @@
 							value=<%=request.getAttribute("top1RecipeId")%> />
 					</div>
 				</div>
+				</div>
 			</div>
+			
+			
+			
 
 			<div class="row">
 				<div class="offset-1 col-2 login" name="mainPage_IMG">

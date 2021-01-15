@@ -3,13 +3,13 @@
 body
 {
 
-		background-image: url("img/jedzenieLogin.jpeg");
+		background-image: url("IMG/jedzenieLogin.jpeg");
 		background-position:  top center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
-
-
+		width: 95%;
+		margin: auto;
 }
 
 
@@ -21,6 +21,17 @@ div.conteiner-login
 	overflow: auto;
 	text-align: center;
 	padding: 50px 50px;
+	display: block;
+}
+
+div.componentList
+{
+	margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+	overflow: auto;
+	text-align: center;
+	padding: 5px 5px;
 	display: block;
 }
 
