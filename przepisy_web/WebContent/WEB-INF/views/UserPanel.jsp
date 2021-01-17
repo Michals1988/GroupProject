@@ -211,7 +211,7 @@ if(userName == null) response.sendRedirect("login");
   <div class="row">
    
    	<div class="col-5 login">
-   	<h3>Podaj stare hasło: </h3>
+   	<h3>Potwierdź nowe hasło: </h3>
    	</div>
     
     <div class="col-7 login">
