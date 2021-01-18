@@ -113,7 +113,9 @@ if(userName == null) response.sendRedirect("login");
 					<div name="recipeRate skladniki">
 					<h2><figcaption name="recipeNote"></figcaption></h2>
 						<div class="offset-3 col-6">
+						<form action="<%=request.getContextPath()%>/FavouritesServlet?recipeId=<%=request.getAttribute("recipeId")%>" method="post">
 							<button type="submit" value="Submit" class="btn btn-primary ">Dodaj do ulubionych</button>
+						</form>
 						</div>
 					</div>
 
@@ -132,8 +134,12 @@ if(userName == null) response.sendRedirect("login");
 		<div class="row">
 		
 			<div class="col-3 skladniki">
-				<div class="" name="components">
-					<%=request.getAttribute("components")%>
+				<div class="">
+				<c:forEach items="${components}" var="component">
+					<p><c:out value="${component.completeComponent}"/></p>
+					<!--  <p><c:out value="${component.unit}"/></p>
+					<p><c:out value="${component.count}"/></p> -->
+							</c:forEach>
 				</div>
 			</div>
 		
@@ -166,9 +172,11 @@ if(userName == null) response.sendRedirect("login");
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 						</br>
 						<div class="offset-3 col-6">
+						<form action="<%= request.getContextPath() %>/RecipePage?recipeId=<%=request.getAttribute("recipeId")%>" method="post">
 					<div class="input-group ">
 						<label class="input-group-text col-3" for="inputGroupSelect01">Oceń przepis:</label>
-						<select class="form-select col-9" name="category">
+						
+						<select class="form-select col-9" name="categoryAddRate">
 							    <option selected>Wybierz ocenę</option>
 							    <option value="1">1</option>
 							    <option value="2">2</option>
@@ -179,6 +187,7 @@ if(userName == null) response.sendRedirect("login");
 					</div>
 					
 						<button type="submit" value="Submit" class="btn btn-primary">Dodaj</button>
+						</form>
 						</div>
 					</div>
 				</div>

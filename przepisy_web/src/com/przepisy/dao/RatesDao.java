@@ -70,7 +70,7 @@ public class RatesDao {
 	}
 		
 	
-	public static void InsertRateForRecipe(String userId,String recipeId,int rate) {
+	public static void InsertRateForRecipe(String userId,String recipeId, String rate) {
 		
 		String QUERY_INSERT_RATE = "insert into rates values (?,?,?,?)";
 		
@@ -80,7 +80,7 @@ public class RatesDao {
                 PreparedStatement preparedStatement = con.prepareStatement(QUERY_INSERT_RATE)) {
                 preparedStatement.setString(1, java.util.UUID.randomUUID().toString());
                 preparedStatement.setString(2, recipeId);
-                preparedStatement.setInt(3, rate);
+                preparedStatement.setString(3, rate);
                 preparedStatement.setString(4, userId);
                 
 
@@ -96,7 +96,7 @@ public class RatesDao {
 		
 	}
 	
-public static void UpdateRateForRecipe(String userId,String recipeId,int rate) {
+public static void UpdateRateForRecipe(String userId,String recipeId, String rate) {
 		
 		String QUERY_INSERT_RATE = "update rates set rate = ? where id_user = ? and id_recipe = ?";
 		
@@ -104,7 +104,7 @@ public static void UpdateRateForRecipe(String userId,String recipeId,int rate) {
 		
 		try (        		
                 PreparedStatement preparedStatement = con.prepareStatement(QUERY_INSERT_RATE)) {
-                preparedStatement.setInt(1, rate);
+                preparedStatement.setString(1, rate);
                 preparedStatement.setString(2, userId);
                 preparedStatement.setString(3, recipeId);
      

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.przepisy.dao.CategoriesDao;
+import com.przepisy.dao.FavouritesDao;
 import com.przepisy.dao.RecipeDao;
 import com.przepisy.models.Categories;
 import com.przepisy.models.TopRecipe;
@@ -45,7 +46,22 @@ public class FavouritesServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		HttpSession session = request.getSession(false);
+		String userId = (String) session.getAttribute("id");
+		String recipeId = request.getParameter("recipeId");
+		
+		int result = 0;
+		ArrayList<String> favIds = FavouritesDao.GetFavouritesIds(userId);
+		for (int i=0; i<favIds.size(); i++) {
+			if (favIds.get(i).contains(recipeId)) {
+				result++;
+			}
+		}
+		
+		if (result == 0) {
+			FavouritesDao.InsertFavourite(recipeId, userId);
+		} 			
+		
 		doGet(request, response);
 	}
 	

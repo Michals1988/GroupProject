@@ -274,17 +274,17 @@ public static Recipe GetFullRecipe (String RecipeId) {
         }
         	  
         String LOAD_RECIPE_ROWS_WITH_DETAILS = "select 	   a.id 			as RowId,"
-										        		+ "a.id_recipe 		as RecipeId,"
-										        		+ "a.id_componente 	as ComponenteId,"
-										        		+ "a.componente_qta as ComponenteQta,"
-										        		+ "a.componente_pos as ComponentePos,"
-										        		+ "b.code			as ComponenteCode,"
-										        		+ "c.code 			as UnitCode"
-										        		+ "from recipes_row as a"
-										        		+ "left join components as b"
-										        			+ "on a.id_componente = b.id"
-										        		+ "left join units as c"
-										        			+ "on b.id_unit = c.id"
+										        		+ " a.id_recipe 		as RecipeId,"
+										        		+ " a.id_componente 	as ComponenteId,"
+										        		+ " a.componente_qta as ComponenteQta,"
+										        		+ " a.componente_pos as ComponentePos,"
+										        		+ " b.code			as ComponenteCode,"
+										        		+ " c.code 			as UnitCode"
+										        		+ " from recipes_row as a "
+										        		+ " left join components as b "
+										        			+ "on a.id_componente = b.id "
+										        		+ " left join units as c "
+										        			+ " on b.id_unit = c.id"
 										        		+ " where a.id_recipe = ?";
         
         preparedStatement = con.prepareStatement(LOAD_RECIPE_ROWS_WITH_DETAILS);

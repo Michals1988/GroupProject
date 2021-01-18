@@ -1,5 +1,6 @@
 package com.przepisy.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 import com.przepisy.dao.CategoriesDao;
@@ -21,6 +23,7 @@ import com.przepisy.models.Categories;
 import com.przepisy.models.Components;
 import com.przepisy.models.Recipe;
 import com.przepisy.models.RecipeRow;
+import com.przepisy.utility.Image;
 
 @WebServlet("/addRecipe")
 public class RecipeAddServlet extends HttpServlet {
@@ -99,7 +102,7 @@ public class RecipeAddServlet extends HttpServlet {
 		}
 		
 		RecipeDao.InsertRecipe(recipe);
-
+		//uploadRecipeImage(request, response, recipeId);
 		
 		session = request.getSession(false);
 		if (session != null) {
@@ -137,6 +140,35 @@ public class RecipeAddServlet extends HttpServlet {
             System.out.println(x.getCode());
         }
         
+	}
+	
+	private void uploadRecipeImage(HttpServletRequest request, HttpServletResponse response, String recipeId) throws ServletException, IOException {
+		Part filePart = request.getPart("RecipeAdd_uploadFile");
+		
+		String fileName = filePart.getSubmittedFileName();
+		String extension = Image.GetExtensionFromName(fileName);
+		
+		fileName = recipeId;		
+		
+		File file = new File("C:/PROJEKT/Images");		
+		boolean fileExists = file.exists();
+		System.out.println("Czy sciezka i folder istnieje? " + fileExists);
+		
+		if (fileExists==false)
+		{
+			System.out.println("Tworzymy sciezke");
+			boolean dirCreated = file.mkdirs();	
+			System.out.println("Czy stworzono sciezke? :  " + dirCreated);
+		}
+		
+		
+		for (Part part: request.getParts()) {
+			part.write( "C:/PROJEKT/Images/" + fileName+"."+extension);
+		}
+		System.out.println("wrzucono plik");
+		
+		Image.ResizeImage(100,100, "C:/PROJEKT/Images/" + fileName+"."+extension);
+		
 	}
 	
 }

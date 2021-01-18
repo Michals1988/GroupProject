@@ -53,5 +53,11 @@ public class RecipeRow {
 		this.componente_qta = componente_qta;
 	}
 	
-
+	public String getComponentCode() {
+		return component.getCode();
+	}
+	
+	public String getUnitDescription() {
+		return component.getUnit_descr();
+	}
 }

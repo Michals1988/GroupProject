@@ -27,7 +27,8 @@ public class CommentsDao {
 												+ "       b.login 			as UserLogin,"
 												+ "       from comments 	as a"
 												+ "       left join users 	as b"
-												+ "       on a.id_user = b.id";
+												+ "       on a.id_user = b.id"
+												+ " where a.id_recipe = ? ";
 			
 			PreparedStatement preparedStatement = con.prepareStatement(LOAD_COMMENTS_WITH_DETAILS);
 	        preparedStatement.setString(1, recipeId);
