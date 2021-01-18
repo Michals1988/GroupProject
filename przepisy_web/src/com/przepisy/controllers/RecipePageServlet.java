@@ -43,6 +43,7 @@ public class RecipePageServlet extends HttpServlet {
 		request.setAttribute("recipeRate", recipe.recipe_header.getRate());
 		
 		request.setAttribute("components", recipe.recipe_row);
+
 		
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/recipeSite.jsp");
         dispatcher.forward(request, response);

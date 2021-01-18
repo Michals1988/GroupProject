@@ -35,6 +35,27 @@ public static void InsertFavourite(String recipeId,String userId) {
 		
 	}
 
+public static void DeleteFavourite(String recipeId,String userId) {
+	
+	String DELETE_FAVOURITE = "delete from favourite where id_recipe = ? and id_user = ?"; 
+	
+	Connection con = ConnectionMysql.getCon();
+	
+	try {       		
+            PreparedStatement preparedStatement = con.prepareStatement(DELETE_FAVOURITE);           
+            preparedStatement.setString(1, recipeId);
+            preparedStatement.setString(2, userId);
+
+            System.out.println(preparedStatement);
+                   
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+        	ConnectionMySQLExceptHandler.printSQLException(e);
+        }
+	
+}
+
 
 public static ArrayList<String> GetFavouritesIds(String userId) {
 	
