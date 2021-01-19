@@ -77,7 +77,6 @@ public class RecipeAddServlet extends HttpServlet {
 		
 		recipe.recipe_header.setId(recipeId);
 		recipe.recipe_header.setName(recipeName);
-		//recipe.recipe_header.generateId();
 		recipe.recipe_header.setDescription(shortDescription);
 		recipe.recipe_header.setNote(longDescription);
 		recipe.recipe_header.setCategoryId(category);
@@ -92,7 +91,6 @@ public class RecipeAddServlet extends HttpServlet {
 			recipeRow.setId(java.util.UUID.randomUUID().toString());
 			System.out.println("RECIPE ROW ID " + recipeRow.getId());
 			recipeRow.setId_recipe(recipeId);
-			//recipeRow.setId_recipe(recipe.recipe_header.getId());
 			recipeRow.setComponentId(comp);
 			recipeRow.setComponente_qta(Float.parseFloat(componentsQta[componentPosition]));
 			recipeRow.setComponente_pos(componentPosition+1);
@@ -114,7 +112,6 @@ public class RecipeAddServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
 			dispatcher.forward(request, response);
 		}
-		//GenerateComponentsList(request, response);
 	}
 
 	private void GenerateComponentsList(HttpServletRequest request, HttpServletResponse response)

@@ -118,7 +118,7 @@
 
 			<div class="offset-2 col-8 login">
 				<br /> <br />
-				<h1>TOP 5 przepisow w tym tygodniu</h1>
+				<h1>TOP 5 przepisów</h1>
 			</div>
 
 

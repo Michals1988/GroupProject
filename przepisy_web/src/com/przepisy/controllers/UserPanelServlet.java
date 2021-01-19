@@ -49,13 +49,11 @@ public class UserPanelServlet extends HttpServlet {
         	isPremium = "TAK";
         }
         request.setAttribute("premium",isPremium);
-        request.setAttribute("premium", session.getAttribute("premium"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/UserPanel.jsp");
         dispatcher.forward(request, response);
         } catch(NullPointerException e) {
         	System.out.println("Sesja wygasła. Redirect do strony logowania");
         	response.getWriter().append("Served at: ").append(request.getContextPath());
-    		// request.setAttribute("errorMessage", " ");
     		Cookie[] cookies = request.getCookies();
     		if (cookies != null) {
     			for (Cookie cookie : cookies) {
