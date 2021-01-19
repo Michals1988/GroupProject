@@ -35,12 +35,13 @@ public class FavouritesServlet extends HttpServlet {
 		generateCategoriesList(request, response);
 		
 		ArrayList<TopRecipe> favouritesRecipes = RecipeDao.GetFavouritesRecipes(userId);
-		for (int recipePosition=0; recipePosition<favouritesRecipes.size(); recipePosition++) {
+		/*for (int recipePosition=0; recipePosition<favouritesRecipes.size(); recipePosition++) {
 			int htmlPosition = recipePosition+1;
 			request.setAttribute("fav"+ htmlPosition +"RecipeRating", favouritesRecipes.get(recipePosition).getRate());
 			request.setAttribute("fav"+ htmlPosition +"RecipeName", favouritesRecipes.get(recipePosition).getRecipeName());
 			request.setAttribute("fav"+ htmlPosition +"RecipeCategory", favouritesRecipes.get(recipePosition).getCategoryName());
-		}
+		}*/
+		request.setAttribute("favouritesRecipes", favouritesRecipes);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/Favourites.jsp");
         dispatcher.forward(request, response);
 	}

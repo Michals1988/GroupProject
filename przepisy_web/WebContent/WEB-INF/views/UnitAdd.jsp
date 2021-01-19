@@ -1,38 +1,48 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pl">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css">
-	
-	
-	
-    <title>GASTROFAZA</title>
-  </head>
-  <body>
-  <%
-String userName = null;
-Cookie[] cookies = request.getCookies();
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-}
-}
-if(userName == null) response.sendRedirect("login");
-%>
-  <header>
-	 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/scripts/reload.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/styles/main.css">
+
+
+
+<title>GASTROFAZA</title>
+</head>
+<body>
+	<%
+		String userName = null;
+	Cookie[] cookies = request.getCookies();
+	if (cookies != null) {
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals("user"))
+		userName = cookie.getValue();
+		}
+	}
+	if (userName == null)
+		response.sendRedirect("login");
+	%>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
 			<a class="navbar-brand" href="#">GASTROFAZA</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent">
@@ -58,7 +68,9 @@ if(userName == null) response.sendRedirect("login");
 						role="button" data-toggle="dropdown"> Kategorie </a>
 						<div class="dropdown-menu">
 							<c:forEach items="${listCategories}" var="Categories">
-								<a class="dropdown-item" value="${Categories.id}" href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out value="${Categories.code}"/></a>
+								<a class="dropdown-item" value="${Categories.id}"
+									href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out
+										value="${Categories.code}" /></a>
 							</c:forEach>
 
 						</div></li>
@@ -76,24 +88,23 @@ if(userName == null) response.sendRedirect("login");
 									type="submit">Szukaj</button>
 							</form>
 						</div></li>
-						
-						<li class="nav-item"><a class="nav-link"
+
+					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/UnitAdd"
-						name="mainPage_linkToFavorite">Dodaj jednostkę<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj jednostkę<span
+							class="sr-only"></span></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/ComponentAdd"
-						name="mainPage_linkToFavorite">Dodaj składnik<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj składnik<span
+							class="sr-only"></span></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/CategoriesAdd"
-						name="mainPage_linkToFavorite">Dodaj kategorię<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj kategorię<span
+							class="sr-only"></span></a></li>
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link"
-						href="<%=request.getContextPath()%>/UserPanel"
+					<a class="nav-link" href="<%=request.getContextPath()%>/UserPanel"
 						name="mainPage_UserName"><%=request.getAttribute("login")%><span
 						class="sr-only"></span> </a>
 				</form>
@@ -104,39 +115,47 @@ if(userName == null) response.sendRedirect("login");
 
 			</div>
 		</nav>
-  </header>
-  <main>
-  </main>
-		<div class="container-flow">
-			<div class=" conteiner-login offset-1 col-10">
-				<div class="offset-3 col-6 tytul">  
-					<h1>DODAJ JEDNOSTKE</h1>
-				</div>
-				<form action="<%= request.getContextPath() %>/UnitAdd" method="POST">
-					<div class="form-group offset-2 col-8">
-						<div class="input-group mb-0">
-							  <label class="input-group-text" for="inputGroupSelect01">OPIS JEDNOSTKI</label>
-									<input type="text"  name="unit_descr" class="form-control" id="recipe">
-						</div>
-						<div class="input-group mb-0">
-							  <label class="input-group-text" for="inputGroupSelect02">SKROT JEDNOSTKI</label>
-									<input type="text"  name="unit_code" class="form-control" id="recipe">
-						</div>
-						  <button type="submit" value="Submit" class="btn btn-primary">Dodaj jednostke</button>
-					</div>
-					</form>
-					<div class="offset-4 col-4 ">
-						<label class="input-group-text" for="inputGroupSelect01" name="unitAdd_addToBase">Jednostka dodana ? Yes:NO</label>
-					</div>
+	</header>
+	<main></main>
+	<div class="container-flow">
+		<div class=" conteiner-login offset-1 col-10">
+			<div class="offset-3 col-6 tytul">
+				<h1>DODAJ JEDNOSTKE</h1>
 			</div>
-			
+			<form action="<%=request.getContextPath()%>/UnitAdd" method="POST">
+				<div class="form-group offset-2 col-8">
+					<div class="input-group mb-0">
+						<label class="input-group-text" for="inputGroupSelect01">OPIS
+							JEDNOSTKI</label> <input type="text" name="unit_descr"
+							class="form-control" id="recipe">
+					</div>
+					<div class="input-group mb-0">
+						<label class="input-group-text" for="inputGroupSelect02">SKROT
+							JEDNOSTKI</label> <input type="text" name="unit_code"
+							class="form-control" id="recipe">
+					</div>
+					<button type="submit" value="Submit" class="btn btn-primary">Dodaj
+						jednostke</button>
+				</div>
+			</form>
+			<div class="offset-4 col-4 ">
+				<label id="componentAdd_addToBase" class="input-group-text"
+					for="inputGroupSelect01" name="unitAdd_addToBase"><%=request.getAttribute("message")%></label>
+			</div>
 		</div>
 
-	
-	
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	</div>
 
 
-  </body>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+
+
+</body>
 </html>

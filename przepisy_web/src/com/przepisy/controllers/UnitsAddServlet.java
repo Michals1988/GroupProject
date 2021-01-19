@@ -26,6 +26,7 @@ public class UnitsAddServlet extends HttpServlet {
 			throws ServletException, IOException {
 		session = request.getSession(false);
 		String userName = (String) session.getAttribute("login");
+		request.setAttribute("message", message);
 		request.setAttribute("login", userName);
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		generateCategoriesList(request, response);

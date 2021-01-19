@@ -33,12 +33,7 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("login", userName);
 		generateCategoriesList(request, response);
 		
-		for (int recipePosition=0; recipePosition<listFoundRecipe.size(); recipePosition++) {
-			int htmlPosition = recipePosition+1;
-			request.setAttribute("found"+ htmlPosition +"RecipeRating", listFoundRecipe.get(recipePosition).getRate());
-			request.setAttribute("found"+ htmlPosition +"RecipeName", listFoundRecipe.get(recipePosition).getRecipeName());
-			request.setAttribute("found"+ htmlPosition +"RecipeCategory", listFoundRecipe.get(recipePosition).getCategoryName());
-		}
+		request.setAttribute("listFoundRecipe", listFoundRecipe);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/searchPage.jsp");
         dispatcher.forward(request, response);
 	}

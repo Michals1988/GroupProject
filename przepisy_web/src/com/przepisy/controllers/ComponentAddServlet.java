@@ -27,6 +27,7 @@ public class ComponentAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		session = request.getSession(false);
+		request.setAttribute("message", message);
 		generateCategoriesList(request, response);
 		String userName = (String) session.getAttribute("login");
 		request.setAttribute("login", userName);
@@ -56,7 +57,6 @@ public class ComponentAddServlet extends HttpServlet {
 		} else {
 			GenerateComponentsList(request, response);
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
-			dispatcher.forward(request, response);
 		}
 
 		if (ComponentsDao.CheckIfComponentExist(componentCode) == 0) {

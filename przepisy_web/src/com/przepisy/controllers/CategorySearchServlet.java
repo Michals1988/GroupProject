@@ -37,12 +37,7 @@ public class CategorySearchServlet extends HttpServlet {
 		String categoryId = (String) request.getParameter("categoryId");
 		listFoundRecipe = RecipeDao.GetRecipeByCategory(categoryId);
 		
-		for (int recipePosition=0; recipePosition<listFoundRecipe.size(); recipePosition++) {
-			int htmlPosition = recipePosition+1;
-			request.setAttribute("found"+ htmlPosition +"RecipeRating", listFoundRecipe.get(recipePosition).getRate());
-			request.setAttribute("found"+ htmlPosition +"RecipeName", listFoundRecipe.get(recipePosition).getRecipeName());
-			request.setAttribute("found"+ htmlPosition +"RecipeCategory", listFoundRecipe.get(recipePosition).getCategoryName());
-		}
+		request.setAttribute("listFoundRecipe", listFoundRecipe);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/categoriesPage.jsp");
         dispatcher.forward(request, response);
 	}

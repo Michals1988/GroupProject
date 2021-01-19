@@ -12,6 +12,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/scripts/reload.js"></script>
 
 
 <link rel="stylesheet"
@@ -147,7 +149,7 @@
 					</div>
 				</form>
 					<div class="offset-4 col-4 ">
-						<label class="input-group-text" for="inputGroupSelect01" name="componentAdd_addToBase">Składnik dodany ? Yes:NO</label>
+						<label id="componentAdd_addToBase" class="input-group-text" for="inputGroupSelect01" name="componentAdd_addToBase"><%=request.getAttribute("message")%></label>
 					</div>
 			</div>
 		</div>

@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css"/>
-	
+		<script type="text/javascript"
+	src="${pageContext.request.contextPath}/scripts/reload.js"></script>
 	
 	
     <title>GASTROFAZA DODAJ KATEGORIE</title>
@@ -126,7 +127,7 @@ if(userName == null) response.sendRedirect("login");
 						  </div>
 						</form>			
 							<div class="offset-3 col-6 ">
-								<label class="input-group-text" for="inputGroupSelect01" name="categotyAdd_addToBase">Kategoria dodana ? Yes:NO</label>
+								<label id="componentAdd_addToBase" class="input-group-text" for="inputGroupSelect01" name="categotyAdd_addToBase"><%=request.getAttribute("message")%></label>
 							</div>
 						
 				</div>

@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +20,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/styles/mainPage.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/styles/mainPage.css">
 
 
 
@@ -40,13 +41,14 @@
 		response.sendRedirect("login");
 	%>
 	<header>
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-	  <a class="navbar-brand" href="#">GASTROFAZA</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" >
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+			<a class="navbar-brand" href="#">GASTROFAZA</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 
 					<li class="nav-item active"><a class="nav-link"
@@ -64,7 +66,9 @@
 						role="button" data-toggle="dropdown"> Kategorie </a>
 						<div class="dropdown-menu">
 							<c:forEach items="${listCategories}" var="Categories">
-								<a class="dropdown-item" value="${Categories.id}" href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out value="${Categories.code}"/></a>
+								<a class="dropdown-item" value="${Categories.id}"
+									href="<%=request.getContextPath()%>/CategorySearchServlet?categoryId=${Categories.id}"><c:out
+										value="${Categories.code}" /></a>
 							</c:forEach>
 
 						</div></li>
@@ -82,24 +86,23 @@
 									type="submit">Szukaj</button>
 							</form>
 						</div></li>
-						
-						<li class="nav-item"><a class="nav-link"
+
+					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/UnitAdd"
-						name="mainPage_linkToFavorite">Dodaj jednostkę<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj jednostkę<span
+							class="sr-only"></span></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/ComponentAdd"
-						name="mainPage_linkToFavorite">Dodaj składnik<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj składnik<span
+							class="sr-only"></span></a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/CategoriesAdd"
-						name="mainPage_linkToFavorite">Dodaj kategorię<span class="sr-only"></span></a>
-					</li>
+						name="mainPage_linkToFavorite">Dodaj kategorię<span
+							class="sr-only"></span></a></li>
 				</ul>
 
 				<form class="form-inline my-2 my-lg-0">
-					<a class="nav-link"
-						href="<%=request.getContextPath()%>/UserPanel"
+					<a class="nav-link" href="<%=request.getContextPath()%>/UserPanel"
 						name="mainPage_UserName"><%=request.getAttribute("login")%><span
 						class="sr-only"></span> </a>
 				</form>
@@ -119,92 +122,25 @@
 			</div>
 
 
-			<div onclick="getRecipeId(<%=request.getAttribute("top1RecipeId")%>)"
-				href="${pageContext.request.contextPath}/RecipePage" >
-				
-				<div onclick="location.href='${pageContext.request.contextPath}/RecipePage';" style="cursor: pointer;" class="row" name="row1">
-					
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
-					<img src="img/risotto.jpg" alt="..." img
-						style="vertical-align: middle">
-				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2 name="fav1RecipeRating"><%=request.getAttribute("fav1RecipeRating")%></h2>
-				</div>
-				<div class="col-6 nazwa">
-					<div name="mainPage_RecipeNameAndCategory">
-						<h2 name="fav1RecipeName" ><%=request.getAttribute("fav1RecipeName")%></h2>
-						<h3 name="fav1RecipeCategory"><%=request.getAttribute("fav1RecipeCategory")%></h3>
-					</div>
-				</div>
-			</div>
-							</div>
-			</div>
-			
+			<c:forEach items="${listFoundRecipe}" var="recipe">
+				<div
+					onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=${recipe.getRecipeId()}';"
+					style="cursor: pointer;" class="row" name="row1">
 
-			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
-					<img src="img/padthai.jpg" alt="..." img
-						style="vertical-align: middle">
-				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.5/5.0</h2>
-				</div>
-				<div class="col-6 nazwa">
-					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Pad Thai</h2>
-						<h3>Dania tajskie</h3>
+					<div class="offset-1 col-2 login" name="mainPage_IMG">
+						<img src="" alt="..." img style="vertical-align: middle">
+					</div>
+					<div class="col-2 login" name="mainPage_Rating">
+						<h2 name="fav1RecipeRating">${recipe.getRate()}</h2>
+					</div>
+					<div class="col-6 nazwa">
+						<div name="mainPage_RecipeNameAndCategory">
+							<h2 name="fav1RecipeName">${recipe.getRecipeName()}</h2>
+							<h3 name="fav1RecipeCategory">${recipe.getCategoryName()}</h3>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
-					<img src="img/krupnik.jpg" alt="..." img
-						style="vertical-align: middle">
-				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.3/5.0</h2>
-				</div>
-				<div class="col-6 nazwa">
-					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Krupnik</h2>
-						<h3>Dania polskie</h3>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
-					<img src="img/schabowy.jpg" alt="..." img
-						style="vertical-align: middle">
-				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>4.1/5.0</h2>
-				</div>
-				<div class="col-6 nazwa">
-					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Schabowy z ziemniakami</h2>
-						<h3>Dania polskie</h3>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
-					<img src="img/pizzaananas.jpg" alt="..." img
-						style="vertical-align: middle">
-				</div>
-				<div class="col-2 login" name="mainPage_Rating">
-					<h2>1.5/5.0</h2>
-				</div>
-				<div class="col-6 nazwa">
-					<div name="mainPage_RecipeNameAndCategory">
-						<h2>Pizza z ananasem</h2>
-						<h3>Dania włoskie</h3>
-					</div>
-				</div>
-			</div>
-
+			</c:forEach>
 
 		</div>
 

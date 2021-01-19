@@ -122,7 +122,7 @@
 				<h1>DODAJ PRZEPIS</h1>
 			</div>
 			<form id="recipeAddForm"
-				action="<%=request.getContextPath()%>/addRecipe" method="post" >
+				action="<%=request.getContextPath()%>/addRecipe" method="post">
 				<input type="hidden" id="hiddenComponents" name="hiddenComponents"
 					value="" /> <input type="hidden" id="hiddenQta" name="hiddenQta"
 					value="" />
@@ -170,7 +170,7 @@
 				class="btn btn-outline-secondary" type="button"
 				name="RecipeAdd_nextIngredient">Kolejny skladnik</button>
 			<div class="input-group mb-0">
-				<input form="recipeAddForm" type="file" class="form-control"
+				<input type="file" class="form-control"
 					id="inputGroupFile02" name="RecipeAdd_uploadFile" accept=".png,.jpg">
 
 			</div>
