@@ -125,6 +125,9 @@ if(userName == null) response.sendRedirect("login");
 						  <button type="submit" value="Submit" class="btn btn-primary">Dodaj jednostke</button>
 					</div>
 					</form>
+					<div class="offset-4 col-4 ">
+						<label class="input-group-text" for="inputGroupSelect01" name="unitAdd_addToBase">Jednostka dodana ? Yes:NO</label>
+					</div>
 			</div>
 			
 		</div>

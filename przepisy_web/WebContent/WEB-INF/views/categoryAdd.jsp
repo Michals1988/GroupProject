@@ -86,7 +86,6 @@
 					action="<%=request.getContextPath()%>/Logout" method="post">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
 				</form>
-
 			</div>
 		</nav>
   </header>
@@ -126,7 +125,9 @@ if(userName == null) response.sendRedirect("login");
 						  <button type="submit" value="Submit" class="btn btn-primary">Dodaj</button>
 						  </div>
 						</form>			
-
+							<div class="offset-3 col-6 ">
+								<label class="input-group-text" for="inputGroupSelect01" name="categotyAdd_addToBase">Kategoria dodana ? Yes:NO</label>
+							</div>
 						
 				</div>
 			</div>  

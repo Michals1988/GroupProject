@@ -113,7 +113,7 @@
 	<main>
 		<div class="conteiner">
 
-			<div class="offset-2 col-8">
+			<div class="offset-2 col-8 login">
 				<br /> <br />
 				<h1>Ulubione</h1>
 			</div>

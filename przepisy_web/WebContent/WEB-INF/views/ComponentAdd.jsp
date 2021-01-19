@@ -146,6 +146,9 @@
 							class="btn btn-primary">Dodaj składnik</button>
 					</div>
 				</form>
+					<div class="offset-4 col-4 ">
+						<label class="input-group-text" for="inputGroupSelect01" name="componentAdd_addToBase">Składnik dodany ? Yes:NO</label>
+					</div>
 			</div>
 		</div>
 
