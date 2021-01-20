@@ -121,21 +121,26 @@ if (userName == null)
 		</div>
 
 		<c:forEach items="${favouritesRecipes}" var="recipe">
+		<div class="offset-1 col-10 row">
 			<div
 				onclick="location.href='${pageContext.request.contextPath}/RecipePage?recipeId=${recipe.getRecipeId()}';"
-				style="cursor: pointer;" class="row" name="row1">
+				style="cursor: pointer;" class="row col-11" name="row1">
 
-				<div class="offset-1 col-2 login" name="mainPage_IMG">
+				<div class="col-2 login" name="mainPage_IMG">
 					<img src="" alt="..." img style="vertical-align: middle">
 				</div>
 				<div class="col-2 login" name="mainPage_Rating">
 					<h2 name="fav1RecipeRating">${recipe.getRate()}</h2>
 				</div>
-				<div class="col-6 nazwa">
+				<div class="col-8 nazwa">
 					<div name="mainPage_RecipeNameAndCategory">
 						<h2 name="fav1RecipeName">${recipe.getRecipeName()}</h2>
 						<h3 name="fav1RecipeCategory">${recipe.getCategoryName()}</h3>
 					</div>
+				</div>
+			</div>
+				<div class="col-1 login">
+					<button type="submit" value="Submit" class="btn btn-primary">USUN</button>
 				</div>
 			</div>
 		</c:forEach>
