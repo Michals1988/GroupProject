@@ -140,7 +140,9 @@ if (userName == null)
 				</div>
 			</div>
 				<div class="col-1 login">
-					<button type="submit" value="Submit" class="btn btn-primary">USUN</button>
+				<form action="<%=request.getContextPath()%>/DeleteFavourites?recipeId=${recipe.getRecipeId()}" method="post">
+					<button type="submit" value="Submit" class="btn btn-primary">USUŃ</button>
+					</form>
 				</div>
 			</div>
 		</c:forEach>

@@ -37,7 +37,7 @@ public static void InsertFavourite(String recipeId,String userId) {
 
 public static void DeleteFavourite(String recipeId,String userId) {
 	
-	String DELETE_FAVOURITE = "delete from favourite where id_recipe = ? and id_user = ?"; 
+	String DELETE_FAVOURITE = "delete from favourite where recipe_header_id = ? and user_id = ?"; 
 	
 	Connection con = ConnectionMysql.getCon();
 	
