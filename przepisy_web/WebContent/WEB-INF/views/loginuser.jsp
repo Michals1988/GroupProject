@@ -55,7 +55,9 @@ if(userName != null) response.sendRedirect("MainPage");
 									<a href="${pageContext.request.contextPath}/register">Zarejestruj sie</a> 
 								</div>	 
 							</form>
-						
+						<div class="offset-3 col-6 ">
+								<label id="componentAdd_addToBase" class="input-group-text" for="inputGroupSelect01" name="categotyAdd_addToBase"><%=request.getAttribute("message")%></label>
+							</div>
 				</div>
 			</div>  
 		  </div> 

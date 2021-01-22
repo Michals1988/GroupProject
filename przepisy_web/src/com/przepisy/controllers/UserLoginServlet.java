@@ -20,12 +20,17 @@ import com.przepisy.models.User;
 @WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String message = "";
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//request.setAttribute("errorMessage", " ");
+		message = request.getParameter("message");
+		if (message == null) {
+			message = "";
+		}
+		request.setAttribute("message", message);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -63,12 +68,11 @@ public class UserLoginServlet extends HttpServlet {
 				 System.out.println("sesja imie usera "+session.getAttribute("name"));
 				 System.out.println("sesja email usera "+session.getAttribute("email"));
 				 System.out.println("sesja premium usera"+session.getAttribute("premium"));
-				 //response.sendRedirect("/przepisy_web/MainPage");
 				 response.sendRedirect("MainPage");
 			 } else {
 				 System.out.println("/WEB-INF/views/loginuser.jsp");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/loginuser.jsp");
-				 request.setAttribute("errorMessage", "Invalid user or password");
+				 request.setAttribute("message", "Niepoprawny użytkownik lub hasło");
 				 dispatcher.forward(request, response);
 			 }
 			

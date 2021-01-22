@@ -30,22 +30,22 @@
 						<form action="<%= request.getContextPath() %>/register" method="post">
 						  <div class="form-group offset-3 col-6 mb-6">
 							<label>LOGIN</label>
-							<input type="text"  name="RegisterPage_Login" class="form-control" id="login">
+							<input type="text"  name="login" class="form-control" id="login">
 						  </div>
 						  
 						  <div class="form-group offset-3 col-6 mb-6">
 							<label for="exampleInputPassword1">HASŁO</label>
-							<input type="password" name="RegisterPage_Password" class="form-control" id="password">
+							<input type="password" name="password" class="form-control" id="password">
 						  </div>
 						  
 						  <div class="form-group offset-3 col-6 mb-6">
 							<label>IMIE</label>
-							<input type="text"  name="RegisterPage_Login" class="form-control" id="login">
+							<input type="text"  name="name" class="form-control" id="login">
 						  </div>
 						  
 						  <div class="form-group offset-3 col-6 mb-6">
 							<label>E-MAIL</label>
-							<input type="email"  name="RegisterPage_Email" class="form-control" id="email">
+							<input type="email"  name="email" class="form-control" id="email">
 						  </div>
 						  
 						  <button type="submit" value="Submit" class="btn btn-primary">Zarejestruj sie</button>

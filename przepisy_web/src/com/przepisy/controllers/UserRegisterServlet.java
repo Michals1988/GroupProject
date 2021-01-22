@@ -19,6 +19,7 @@ import com.przepisy.models.User;
 @WebServlet("/register")
 public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String message = "";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -61,13 +62,17 @@ public class UserRegisterServlet extends HttpServlet {
 			 if (UsersRegisterDao.UserCheckIfExist(user.getLogin(), user.getEmail())==0)
 			 {
 				 if(UsersRegisterDao.registerUser(user)==1) {
-					 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/successmsg.jsp");
-					 dispatcher.forward(request, response);
+					 /*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/MainPage.jsp");
+					 dispatcher.forward(request, response);*/
+					 message = "Zarejestrowano pomyślnie";
+					 response.sendRedirect("login?message=" + message);
 				 }else {
-					 System.out.println("cos poszlo nie tak przy rejestracji");
+					 message = "Coś poszło nie tak";
+					 response.sendRedirect("login?message=" + message);
 				 }					 				 				 
 			 } else {
-				 System.out.println("user istnieje");
+				 message = "Użytkownik istnieje";
+				 response.sendRedirect("login?message=" + message);
 			 }
 			
 			
